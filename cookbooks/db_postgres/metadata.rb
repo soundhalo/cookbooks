@@ -61,7 +61,7 @@ attribute "db_postgres/encoding",
   :display_name => "Database Encoding",
   :description =>
     "Defaults to 'UTF8' but allows for overriding the default database templating encoding",
-  :recipes => ["db::install_server"],
+  :recipes => ["db_postgres::setup_server_9_1","db::install_server"],
   :default => "UTF8"
     
 attribute "db_postgres/database_name",

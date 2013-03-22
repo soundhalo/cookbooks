@@ -72,7 +72,8 @@
       "type": "string",
       "display_name": "Database Encoding",
       "recipes": [
-        "db::install_server"
+        "db_postgres::setup_server_9_1",
+		"db::install_server"
       ],
       "calculated": false,
       "default": "UTF8",
