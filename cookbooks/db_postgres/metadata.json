@@ -72,7 +72,7 @@
       "type": "string",
       "display_name": "Database Encoding",
       "recipes": [
-        "db::init_server"
+        "db::install_server"
       ],
       "calculated": false,
       "default": "UTF8",
