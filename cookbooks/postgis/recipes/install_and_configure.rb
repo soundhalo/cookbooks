@@ -46,8 +46,8 @@ bash "compile_and_install_postgis" do
   user "root"
   cwd "/tmp"
   code <<-EOH
-  tar -zxf #{node[:postgis][:tarball]}
-  cd #{node[:postgis][:tarball]}
+  tar -zxf #{node[:postgis][:tarball]} -C ~/postgis
+  cd postgis
   ./configure --with-pgconfig=#{pgconfig}
   make
   make install
