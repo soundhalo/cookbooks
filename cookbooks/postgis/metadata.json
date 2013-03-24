@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "long_description": "",
+  "groupings": {
+  },
+  "maintainer": "Two Bulls",
+  "attributes": {
+  },
+  "suggestions": {
+  },
+  "name": "postgis",
+  "description": "Installs and configures Postgis 1.5 onto Postgresql 9.1",
+  "recipes": {
+    "postgis::install_and_configure": "Installs and configures the PostGIS",
+    "postgis::default": "Does nothing"
+  },
+  "replacing": {
+  },
+  "providing": {
+  },
+  "platforms": {
+  },
+  "maintainer_email": "steve@two-bulls.com",
+  "version": "1.0.0",
+  "conflicting": {
+  },
+  "license": "NA"
+}
