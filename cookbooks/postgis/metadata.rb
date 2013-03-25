@@ -12,3 +12,5 @@ recipe "postgis::default",
 recipe "postgis::install_and_configure",
   "Installs and configures the PostGIS"
   
+recipe "postgis::add_geo_template",
+  "Adds a geo template with appropiate data into the database"

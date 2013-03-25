@@ -1,31 +1,32 @@
 {
+  "recommendations": {
+  },
+  "maintainer": "Two Bulls",
+  "license": "NA",
+  "suggestions": {
+  },
   "dependencies": {
   },
-  "recommendations": {
+  "version": "1.0.0",
+  "description": "Installs and configures Postgis 1.5 onto Postgresql 9.1",
+  "conflicting": {
+  },
+  "platforms": {
   },
   "long_description": "",
   "groupings": {
   },
-  "maintainer": "Two Bulls",
-  "attributes": {
-  },
-  "suggestions": {
+  "maintainer_email": "steve@two-bulls.com",
+  "recipes": {
+    "postgis::default": "Does nothing",
+    "postgis::add_geo_template": "Adds a geo template with appropiate data into the database",
+    "postgis::install_and_configure": "Installs and configures the PostGIS"
   },
   "name": "postgis",
-  "description": "Installs and configures Postgis 1.5 onto Postgresql 9.1",
-  "recipes": {
-    "postgis::install_and_configure": "Installs and configures the PostGIS",
-    "postgis::default": "Does nothing"
+  "attributes": {
   },
   "replacing": {
   },
   "providing": {
-  },
-  "platforms": {
-  },
-  "maintainer_email": "steve@two-bulls.com",
-  "version": "1.0.0",
-  "conflicting": {
-  },
-  "license": "NA"
+  }
 }
