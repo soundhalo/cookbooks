@@ -42,7 +42,7 @@ when "centos", "redhat"
 end
 
 dir_name =  node[:postgis][:tarball].gsub(/.tar.gz/,"")
-
+log "dir_name=#{dir_name}"
 # compile and install
 bash "compile_and_install_postgis" do
   user "root"
@@ -50,7 +50,7 @@ bash "compile_and_install_postgis" do
   code <<-EOH
   tar -zxf #{node[:postgis][:tarball]}
   cd #{dir_name}
-  ./configure --with-pgconfig=#{pgconfig}
+  ./configure --with-pgconfig=`pg_config --bindir`/pg_config
   make
   make install
   EOH
