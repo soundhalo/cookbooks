@@ -41,13 +41,15 @@ when "centos", "redhat"
   log "Configuring for #{node[:platform]}"
 end
 
+dir_name =  node[:postgis][:tarball].gsub(/.tar.gz/,"")
+
 # compile and install
 bash "compile_and_install_postgis" do
   user "root"
   cwd "/tmp"
   code <<-EOH
-  tar -zxf #{node[:postgis][:tarball]} -C /tmp/postgis
-  cd /tmp/postgis
+  tar -zxf #{node[:postgis][:tarball]}
+  cd #{dir_name}
   ./configure --with-pgconfig=#{pgconfig}
   make
   make install
