@@ -57,3 +57,5 @@ bash "compile_and_install_postgis" do
 end
 log "PostGIS installed"
 
+rightscale_marker :end
+
