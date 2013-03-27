@@ -1,0 +1,25 @@
+
+DEBUG = <%= @node[:app_django][:app][:debug_mode] %>
+TEMPLATE_DEBUG = DEBUG
+
+# The database engine used here is set by the "install_client_driver" action of db provider.
+# See cookbooks/db_<provider>/providers/default.rb for more information.
+DATABASES = {
+  'default': {
+    'ENGINE': '<%= @node[:db][:client][:driver] %>',
+    'NAME': '<%= @database %>',
+    'USER': '<%= @user %>',
+    'PASSWORD': '<%= @password %>',
+    'HOST': '<%= @fqdn %>',
+    'PORT': '',
+  }
+}
+
+ENVIRONMENT = '<%= @node[:app_django][:environment] %>'
+
+# celery broker information
+BROKER_HOST = '<%= @node[:app_django][:broker_host] %>' # "127.0.0.1"
+BROKER_PORT = <%= @node[:app_django][:broker_port] %> # 5672
+BROKER_VHOST = '<%= @node[:app_django][:broker_vhost] %>' # "/soundhalo"
+BROKER_USER = '<%= @node[:app_django][:broker_user] %>' # "soundhalo"
+BROKER_PASSWORD = '<%= @node[:app_django][:broker_password] %>' # "2Bulls2012!"
