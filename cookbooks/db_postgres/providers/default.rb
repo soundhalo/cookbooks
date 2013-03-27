@@ -656,6 +656,8 @@ action :restore_from_dump_file do
       elsif command_output =~ /bzip2 compressed data/
         extension = "bz2"
         node[:db][:dump][:uncompress_command] = "bunzip2 <"
+      elsif command_output =~ /ASCII C program text/
+        node[:db][:dump][:uncompress_command] = "cat"
       end
       node[:db][:dump][:filepath] = dumpfilepath_without_extension +
         "." +
