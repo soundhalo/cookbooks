@@ -173,7 +173,7 @@ action :install_client do
     "default" => ""
   )
 
-#  raise "Platform not supported for PostgreSQL #{version}" if node[:db_postgres][:client_packages_install].empty?
+  raise "Platform not supported for PostgreSQL #{version}" if node[:db_postgres][:client_packages_install].empty?
 
   # Install PostgreSQL package(s)
   if node[:platform] =~ /redhat|centos/
@@ -194,21 +194,21 @@ action :install_client do
     end
   else
     # Currently supports CentOS in future will support others
-    #raise "ERROR:: Unrecognized distro #{node[:platform]}, exiting "
+    raise "ERROR:: Unrecognized distro #{node[:platform]}, exiting "
   end
 
   # Link postgresql pg_config to default system bin path - required by app servers
-#  link "/usr/bin/pg_config" do
-#    to "/usr/pgsql-#{version}/bin/pg_config"
-#    not_if { ::File.exists?("/usr/bin/pg_config") }
-#  end
+  link "/usr/bin/pg_config" do
+    to "/usr/pgsql-#{version}/bin/pg_config"
+    not_if { ::File.exists?("/usr/bin/pg_config") }
+  end
 
   # Install PostgreSQL client gem
-#  node[:db_postgres][:bindir] = "/usr/pgsql-#{version}/bin"
-#  gem_package("pg") do
-#    gem_binary("/opt/rightscale/sandbox/bin/gem")
-#    options("-- --with-pg-config=#{node[:db_postgres][:bindir]}/pg_config")
-#  end
+  node[:db_postgres][:bindir] = "/usr/pgsql-#{version}/bin"
+  gem_package("pg") do
+    gem_binary("/opt/rightscale/sandbox/bin/gem")
+    options("-- --with-pg-config=#{node[:db_postgres][:bindir]}/pg_config")
+  end
 
 end
 
