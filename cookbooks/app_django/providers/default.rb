@@ -162,7 +162,7 @@ action :setup_db_connection do
     owner "#{node[:app][:user]}"
     cookbook 'app_django'
     variables(
-      :environement => node[:app_django][:environment]
+      :environement => node[:app_django][:app][:environment]
     )
   end
 end

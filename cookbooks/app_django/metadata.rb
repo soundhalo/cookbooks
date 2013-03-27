@@ -67,3 +67,43 @@ attribute "app_django/project/custom_cmd",
   :required => "optional",
   :default => "",
   :recipes => ["app_django::run_custom_django_commands"]
+
+attribute "app_django/app/environment",
+  :display_name => "The environment to use",
+  :description =>
+    "Defaults to 'production",
+  :required => "optional",
+  :default => "production",
+  :recipes => ["app_django::setup_server_1_4"]
+  
+attribute "app_django/celery/broker_host",
+  :display_name => "The broker host",
+  :description =>
+    "The celery broker host",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/celery/broker_port",
+  :display_name => "The broker port",
+  :description =>
+    "The celery broker port",
+  :default => "5672",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/celery/broker_vhost",
+  :display_name => "The broker vhost",
+  :description =>
+    "The celery broker vhost",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/celery/broker_user",
+  :display_name => "The broker user",
+  :description =>
+    "The celery broker user",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/celery/broker_password",
+  :display_name => "The broker password",
+  :description =>
+    "The celery broker password",
+  :recipes => ["app_django::setup_server_1_4"]
+  
