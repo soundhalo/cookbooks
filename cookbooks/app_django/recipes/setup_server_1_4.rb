@@ -25,7 +25,8 @@ when "ubuntu"
     "python-setuptools",
     "libapache2-mod-wsgi",
     "python-simplejson",
-    "python-pip"
+    "python-pip",
+    "geos"
   ]
   node[:app][:user] = "www-data"
   node[:app][:group] = "www-data"
@@ -45,7 +46,8 @@ when "centos", "redhat"
     "python-devel",
     "python-setuptools",
     "python-simplejson",
-    "python-pip"
+    "python-pip",
+    "geos"
   ]
   node[:app][:user] = "apache"
   node[:app][:group] = "apache"
