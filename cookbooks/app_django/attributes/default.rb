@@ -26,3 +26,9 @@ default[:app_django][:project][:custom_cmd] = ""
 default[:app_django][:app][:environment] = "production"
 default[:app_django][:app][:name] = ""
 
+default[:app_django][:celery][:broker_host] = ""
+default[:app_django][:celery][:broker_port] = "5672"
+default[:app_django][:celery][:broker_vhost] = ""
+default[:app_django][:celery][:broker_user] = ""
+default[:app_django][:celery][:broker_password] = ""
+

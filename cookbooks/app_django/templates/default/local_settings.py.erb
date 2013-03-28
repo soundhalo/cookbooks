@@ -15,11 +15,5 @@ DATABASES = {
   }
 }
 
-ENVIRONMENT = '<%= @node[:app_django][:environment] %>'
-
-# celery broker information
-BROKER_HOST = '<%= @node[:app_django][:broker_host] %>' # "127.0.0.1"
-BROKER_PORT = <%= @node[:app_django][:broker_port] %> # 5672
-BROKER_VHOST = '<%= @node[:app_django][:broker_vhost] %>' # "/soundhalo"
-BROKER_USER = '<%= @node[:app_django][:broker_user] %>' # "soundhalo"
-BROKER_PASSWORD = '<%= @node[:app_django][:broker_password] %>' # "2Bulls2012!"
+# celery info
+BROKER_URL = '<%= @vars[:broker_url] %>'

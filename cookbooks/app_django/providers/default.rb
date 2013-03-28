@@ -141,7 +141,15 @@ action :setup_db_connection do
       FileUtils.mv(settingsfile, defaultfile)
     end
   end
-
+  
+  # celery broker 
+  broker_url = "ampq://" +  @node[:app_django][:celery][:broker_user]
+  broker_url += ":" + @node[:app_django][:celery][:broker_password]
+  broker_url += "@" + @node[:app_django][:celery][:broker_host]
+  broker_url += ":" + @node[:app_django][:celery][:broker_port]
+  broker_url += "/" + @node[:app_django][:celery][:broker_vhost]
+  log " Setting up broker_url: #{broker_url}"
+  
   # Tells selected db_adapter to fill in it's specific connection template
   log "  Creating local_settings.py for DB: #{db_name}"
   # See cookbooks/db/definitions/db_connect_app.rb for the "db_connect_app" definition.
@@ -152,6 +160,9 @@ action :setup_db_connection do
     database db_name
     cookbook "app_django"
     driver_type "python"
+    vars(
+      :broker_url => broker_url
+    )
   end
 
   log "  Creating local_environment.py"
@@ -162,7 +173,7 @@ action :setup_db_connection do
     owner "#{node[:app][:user]}"
     cookbook 'app_django'
     variables(
-      :environement => node[:app_django][:app][:environment]
+      :environment => node[:app_django][:app][:environment]
     )
   end
   
