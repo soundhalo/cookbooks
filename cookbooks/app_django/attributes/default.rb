@@ -24,4 +24,5 @@ default[:app_django][:project][:opt_pip_list] = ""
 default[:app_django][:project][:custom_cmd] = ""
 
 default[:app_django][:app][:environment] = "production"
+default[:app_django][:app][:name] = ""
 

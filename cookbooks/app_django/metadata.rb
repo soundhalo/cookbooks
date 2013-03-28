@@ -76,6 +76,12 @@ attribute "app_django/app/environment",
   :default => "production",
   :recipes => ["app_django::setup_server_1_4"]
   
+attribute "app_django/app/name",
+  :display_name => "The name of the django app",
+  :description =>
+    "Used to configure local_[x].py files",
+  :recipes => ["app_django::setup_server_1_4"]
+  
 attribute "app_django/celery/broker_host",
   :display_name => "The broker host",
   :description =>

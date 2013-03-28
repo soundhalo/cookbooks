@@ -145,7 +145,7 @@ action :setup_db_connection do
   # Tells selected db_adapter to fill in it's specific connection template
   log "  Creating local_settings.py for DB: #{db_name}"
   # See cookbooks/db/definitions/db_connect_app.rb for the "db_connect_app" definition.
-  db_connect_app ::File.join(project_root, "local_settings.py") do
+  db_connect_app "#{project_root}/#{node[:app_django][:app][:name]}/local_settings.py" do
     template "local_settings.py.erb"
     owner node[:app][:user]
     group node[:app][:group]
@@ -155,7 +155,7 @@ action :setup_db_connection do
   end
 
   log "  Creating local_environment.py"
-  template "#{project_root}/local_environment.py" do
+  template "#{project_root}/#{node[:app_django][:app][:name]}/local_environment.py" do
     action :create
     source "local_environment.py.erb"
     group "#{node[:app][:group]}"
@@ -165,6 +165,27 @@ action :setup_db_connection do
       :environement => node[:app_django][:app][:environment]
     )
   end
+  
+  # setup log files folder
+  directory "/var/log/webapp" do
+    owner "#{node[:app][:user]}"
+    group "#{node[:app][:group]}"
+    mode "0755"
+    action :create
+  end
+  
+  log "  Creating local_logfiles.py"
+  template "#{project_root}/#{node[:app_django][:app][:name]}/local_logfiles.py" do
+    action :create
+    source "local_logfiles.py.erb"
+    group "#{node[:app][:group]}"
+    owner "#{node[:app][:user]}"
+    cookbook 'app_django'
+    variables(
+      :environement => node[:app_django][:app][:environment]
+    )
+  end
+
 end
 
 # Download/Update application repository
