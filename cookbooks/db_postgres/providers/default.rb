@@ -167,7 +167,7 @@ action :install_client do
         "postgresql",
         "postgresql-client"
       ]
-    }
+    },
     "default" => []
   )
 
