@@ -162,6 +162,12 @@ action :install_client do
         "postgresql91-devel"
       ]
     },
+    "ubuntu" => {
+      "default" => [
+        "postgresql",
+        "postgresql-client"
+      ]
+    }
     "default" => []
   )
 
@@ -192,19 +198,27 @@ action :install_client do
         version node[:db_postgres][:packages_version]
       end
     end
+    # Link postgresql pg_config to default system bin path - required by app servers
+    link "/usr/bin/pg_config" do
+      to "/usr/pgsql-#{version}/bin/pg_config"
+      not_if { ::File.exists?("/usr/bin/pg_config") }
+    end
+    node[:db_postgres][:bindir] = "/usr/pgsql-#{version}/bin"
+  elsif node[:platform] =~ /ubuntu/
+    packages = node[:db_postgres][:client_packages_install]
+    log "  Packages to install: #{packages.join(", ")}"
+    packages.each do |p|
+      package p do
+        action :install
+      end
+    end
+    node[:db_postgres][:bindir] = "/usr/bin/"
   else
-    # Currently supports CentOS in future will support others
+    # Currently supports CentOS or ubuntu in future will support others
     raise "ERROR:: Unrecognized distro #{node[:platform]}, exiting "
   end
 
-  # Link postgresql pg_config to default system bin path - required by app servers
-  link "/usr/bin/pg_config" do
-    to "/usr/pgsql-#{version}/bin/pg_config"
-    not_if { ::File.exists?("/usr/bin/pg_config") }
-  end
-
   # Install PostgreSQL client gem
-  node[:db_postgres][:bindir] = "/usr/pgsql-#{version}/bin"
   gem_package("pg") do
     gem_binary("/opt/rightscale/sandbox/bin/gem")
     options("-- --with-pg-config=#{node[:db_postgres][:bindir]}/pg_config")
