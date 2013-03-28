@@ -143,11 +143,11 @@ action :setup_db_connection do
   end
   
   # celery broker 
-  broker_url = "ampq://" +  @node[:app_django][:celery][:broker_user]
-  broker_url += ":" + @node[:app_django][:celery][:broker_password]
-  broker_url += "@" + @node[:app_django][:celery][:broker_host]
-  broker_url += ":" + @node[:app_django][:celery][:broker_port]
-  broker_url += "/" + @node[:app_django][:celery][:broker_vhost]
+  broker_url = "ampq://" +  node[:app_django][:celery][:broker_user]
+  broker_url += ":" + node[:app_django][:celery][:broker_password]
+  broker_url += "@" + node[:app_django][:celery][:broker_host]
+  broker_url += ":" + node[:app_django][:celery][:broker_port]
+  broker_url += "/" + node[:app_django][:celery][:broker_vhost]
   log " Setting up broker_url: #{broker_url}"
   
   # Tells selected db_adapter to fill in it's specific connection template
