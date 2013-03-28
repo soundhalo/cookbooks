@@ -26,7 +26,8 @@ when "ubuntu"
     "libapache2-mod-wsgi",
     "python-simplejson",
     "python-pip",
-    "geos"
+    "libgeos-3.2.2",
+    "libgeos-c1"
   ]
   node[:app][:user] = "www-data"
   node[:app][:group] = "www-data"
