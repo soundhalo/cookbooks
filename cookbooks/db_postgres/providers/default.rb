@@ -165,7 +165,8 @@ action :install_client do
     "ubuntu" => {
       "default" => [
         "postgresql",
-        "postgresql-client"
+        "postgresql-client",
+        "libpq-dev"
       ]
     },
     "default" => []
