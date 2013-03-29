@@ -2,7 +2,7 @@ maintainer       "Steve Cassidy"
 maintainer_email "steve@two-bulls.com"
 license          "N/A"
 description      "Installs/Configures celery"
-long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
 supports "ubuntu" # It should work on debian too, but not tested yet
@@ -35,11 +35,6 @@ attribute "celery/events",
   :display_name => "Events enabled",
   :description  => "Enables celery events notifications",
   :default      => "true"
-
-attribute "celery/create_user",
-  :display_name => "Create user",
-  :description  => "Enables celery user creation",
-  :default      => "false"
 
 attribute "celery/user",
   :display_name => "Celery user",

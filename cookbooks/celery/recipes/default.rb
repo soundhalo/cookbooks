@@ -25,9 +25,7 @@ python_pip "celery" do
   action :install
 end
 
-if node["celery"]["create_user"]
-  include_recipe "celery::user"
-end
+include_recipe "celery::user"
 
 directory "#{node[:celery][:log_dir]}" do
   owner "#{node[:celery][:user]}"

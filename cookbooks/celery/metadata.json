@@ -1,133 +1,119 @@
 {
-  "maintainer_email": "steve@two-bulls.com",
-  "maintainer": "Steve Cassidy",
-  "attributes": {
-    "celery/create_user": {
-      "display_name": "Create user",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "default": "false",
-      "type": "string",
-      "description": "Enables celery user creation",
-      "recipes": [
-
-      ],
-      "calculated": false
-    },
-    "celery/log_level": {
-      "display_name": "Log level",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "default": "info",
-      "type": "string",
-      "description": "Celery daemon log level",
-      "recipes": [
-
-      ],
-      "calculated": false
-    },
-    "celery/workers": {
-      "display_name": "Celery workers",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "default": "1",
-      "type": "string",
-      "description": "Celery workers to be spawned",
-      "recipes": [
-
-      ],
-      "calculated": false
-    },
-    "celery/group": {
-      "display_name": "Celery group",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "default": "celery",
-      "type": "string",
-      "description": "Celery daemon group",
-      "recipes": [
-
-      ],
-      "calculated": false
-    },
-    "celery/events": {
-      "display_name": "Events enabled",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "default": "true",
-      "type": "string",
-      "description": "Enables celery events notifications",
-      "recipes": [
-
-      ],
-      "calculated": false
-    },
-    "celery/log_dir": {
-      "display_name": "Log directory",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "default": "/var/log/celery",
-      "type": "string",
-      "description": "Celery daemon log directory",
-      "recipes": [
-
-      ],
-      "calculated": false
-    },
-    "celery/user": {
-      "display_name": "Celery user",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "default": "celery",
-      "type": "string",
-      "description": "Celery daemon user",
-      "recipes": [
-
-      ],
-      "calculated": false
-    }
+  "license": "N/A",
+  "version": "0.0.1",
+  "replacing": {
   },
   "providing": {
   },
-  "dependencies": {
-    "python": ">= 0.0.0",
-    "app_django": ">= 0.0.0",
-    "app": ">= 0.0.0"
-  },
-  "name": "django_celery",
-  "recommendations": {
-  },
-  "groupings": {
-  },
-  "conflicting": {
-  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n",
   "description": "Installs/Configures celery",
   "recipes": {
-    "celery::user": "Create an user to run Celery daemon",
-    "celery": "Include Celery daemon install/configuration"
+    "celery::default": "Include Celery daemon install/configuration",
+    "celery::user": "Create an user to run Celery daemon"
+  },
+  "recommendations": {
+  },
+  "maintainer_email": "steve@two-bulls.com",
+  "conflicting": {
+  },
+  "suggestions": {
+  },
+  "maintainer": "Steve Cassidy",
+  "dependencies": {
+    "app_django": ">= 0.0.0",
+    "app": ">= 0.0.0",
+    "python": ">= 0.0.0"
   },
   "platforms": {
     "ubuntu": ">= 0.0.0"
   },
-  "version": "0.0.1",
-  "replacing": {
+  "groupings": {
   },
-  "suggestions": {
+  "attributes": {
+    "celery/events": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "description": "Enables celery events notifications",
+      "recipes": [
+
+      ],
+      "type": "string",
+      "required": "optional",
+      "default": "true",
+      "display_name": "Events enabled"
+    },
+    "celery/log_dir": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "description": "Celery daemon log directory",
+      "recipes": [
+
+      ],
+      "type": "string",
+      "required": "optional",
+      "default": "/var/log/celery",
+      "display_name": "Log directory"
+    },
+    "celery/workers": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "description": "Celery workers to be spawned",
+      "recipes": [
+
+      ],
+      "type": "string",
+      "required": "optional",
+      "default": "1",
+      "display_name": "Celery workers"
+    },
+    "celery/user": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "description": "Celery daemon user",
+      "recipes": [
+
+      ],
+      "type": "string",
+      "required": "optional",
+      "default": "celery",
+      "display_name": "Celery user"
+    },
+    "celery/group": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "description": "Celery daemon group",
+      "recipes": [
+
+      ],
+      "type": "string",
+      "required": "optional",
+      "default": "celery",
+      "display_name": "Celery group"
+    },
+    "celery/log_level": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "description": "Celery daemon log level",
+      "recipes": [
+
+      ],
+      "type": "string",
+      "required": "optional",
+      "default": "info",
+      "display_name": "Log level"
+    }
   },
-  "license": "N/A",
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n"
+  "name": "celery"
 }

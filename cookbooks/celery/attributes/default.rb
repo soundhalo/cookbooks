@@ -21,7 +21,6 @@ default[:celery][:log_level] = "info"
 default[:celery][:concurrency] = 8
 default[:celery][:workers] = node[:cpu][:total]
 default[:celery][:events] = true
-default[:celery][:create_user] = false
 default[:celery][:user] = "celery"
 default[:celery][:group] = "celery"
 default[:celery][:pool] = "processes"
