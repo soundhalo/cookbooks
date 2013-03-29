@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+rightscale_marker :begin
+
 group "#{node[:celery][:group]}" do
   action :create
 end
@@ -25,3 +27,5 @@ user "#{node[:celery][:user]}" do
   gid "#{node[:celery][:group]}"
   system true
 end
+
+rightscale_marker :end

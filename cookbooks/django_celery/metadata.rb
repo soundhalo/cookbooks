@@ -4,14 +4,17 @@ license          "N/A"
 description      "Installs/Configures celery"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
-recipe           "celery", "Include Celery daemon install/configuration"
-recipe           "celery::user", "Create an user to run Celery daemon"
 
 supports "ubuntu" # It should work on debian too, but not tested yet
 
 depends "python"
 depends "app"
 depends "app_django"
+
+recipe           "celery::default",
+  "Include Celery daemon install/configuration"
+recipe           "celery::user",
+  "Create an user to run Celery daemon"
 
 attribute "celery/log_dir",
   :display_name => "Log directory",
