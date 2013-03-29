@@ -57,7 +57,6 @@ template "/etc/init.d/celeryd" do
 end
 
 service "celeryd" do
-    provider Chef::Provider::Service::Upstart
     enabled true
     running true
     supports :restart => true, :reload => true, :status => true
