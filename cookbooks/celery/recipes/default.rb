@@ -46,7 +46,6 @@ template "/etc/default/celeryd" do
     owner "root"
     group "root"
     mode 0750
-    notifies :restart, "service[celery]"
 end
 
 template "/etc/init.d/celeryd" do
@@ -54,7 +53,7 @@ template "/etc/init.d/celeryd" do
     owner "root"
     group "root"
     mode 0750
-    notifies :restart, "service[celery]"
+    notifies :restart, "service[celeryd]"
 end
 
 service "celeryd" do
