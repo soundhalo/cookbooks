@@ -57,7 +57,7 @@ template "/etc/init.d/celeryd" do
     notifies :restart, "service[celery]"
 end
 
-service "celery" do
+service "celeryd" do
     provider Chef::Provider::Service::Upstart
     enabled true
     running true
