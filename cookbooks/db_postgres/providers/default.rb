@@ -344,7 +344,7 @@ action :install_client_driver do
     end
   when "python"
     # This adapter type is used by Django application servers
-    node[:db][:client][:driver] = "django.db.backends.postgresql_psycopg2"
+    node[:db][:client][:driver] = "django.contrib.gis.db.backends.postgis"
     python_pip "psycopg2" do
       version "2.4.5"
       action :install
