@@ -17,6 +17,8 @@
 # limitations under the License.
 #
 
+rightscale_marker :begin
+
 include_recipe "python"
 
 python_pip "celery" do
@@ -64,3 +66,5 @@ service "celery" do
     supports :restart => true, :reload => true, :status => true
     action [:enable, :start]
 end
+
+rightscale_marker :end
