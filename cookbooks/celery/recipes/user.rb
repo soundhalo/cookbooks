@@ -28,4 +28,9 @@ user "#{node[:celery][:user]}" do
   system true
 end
 
+# add our celery user to the web user group
+execute "usermod -a -G #{node[:app][:group]} #{node[:celery][:user]}" do
+  action :run
+end
+
 rightscale_marker :end
