@@ -1,119 +1,119 @@
 {
   "license": "N/A",
-  "version": "0.0.1",
-  "replacing": {
-  },
-  "providing": {
-  },
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n",
-  "description": "Installs/Configures celery",
-  "recipes": {
-    "celery::default": "Include Celery daemon install/configuration",
-    "celery::user": "Create an user to run Celery daemon"
-  },
-  "recommendations": {
-  },
+  "maintainer": "Steve Cassidy",
   "maintainer_email": "steve@two-bulls.com",
+  "version": "0.0.1",
+  "description": "Installs/Configures celery",
   "conflicting": {
+  },
+  "name": "celery",
+  "providing": {
   },
   "suggestions": {
   },
-  "maintainer": "Steve Cassidy",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n",
+  "groupings": {
+  },
   "dependencies": {
     "app_django": ">= 0.0.0",
     "app": ">= 0.0.0",
     "python": ">= 0.0.0"
   },
-  "platforms": {
-    "ubuntu": ">= 0.0.0"
-  },
-  "groupings": {
+  "recipes": {
+    "celery::user": "Create an user to run Celery daemon",
+    "celery::default": "Include Celery daemon install/configuration"
   },
   "attributes": {
+    "celery/group": {
+      "default": "celery",
+      "calculated": false,
+      "display_name": "Celery group",
+      "description": "Celery daemon group",
+      "type": "string",
+      "required": "optional",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ]
+    },
     "celery/events": {
-      "calculated": false,
-      "choice": [
-
-      ],
-      "description": "Enables celery events notifications",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
       "default": "true",
-      "display_name": "Events enabled"
-    },
-    "celery/log_dir": {
       "calculated": false,
-      "choice": [
-
-      ],
-      "description": "Celery daemon log directory",
+      "display_name": "Events enabled",
+      "description": "Enables celery events notifications",
+      "type": "string",
+      "required": "optional",
       "recipes": [
 
       ],
-      "type": "string",
-      "required": "optional",
-      "default": "/var/log/celery",
-      "display_name": "Log directory"
-    },
-    "celery/workers": {
-      "calculated": false,
       "choice": [
 
-      ],
-      "description": "Celery workers to be spawned",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "default": "1",
-      "display_name": "Celery workers"
+      ]
     },
     "celery/user": {
+      "default": "celery",
       "calculated": false,
-      "choice": [
-
-      ],
+      "display_name": "Celery user",
       "description": "Celery daemon user",
+      "type": "string",
+      "required": "optional",
       "recipes": [
 
       ],
-      "type": "string",
-      "required": "optional",
-      "default": "celery",
-      "display_name": "Celery user"
-    },
-    "celery/group": {
-      "calculated": false,
       "choice": [
 
-      ],
-      "description": "Celery daemon group",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "default": "celery",
-      "display_name": "Celery group"
+      ]
     },
     "celery/log_level": {
+      "default": "info",
       "calculated": false,
-      "choice": [
-
-      ],
+      "display_name": "Log level",
       "description": "Celery daemon log level",
+      "type": "string",
+      "required": "optional",
       "recipes": [
 
       ],
+      "choice": [
+
+      ]
+    },
+    "celery/log_dir": {
+      "default": "/var/log/celery",
+      "calculated": false,
+      "display_name": "Log directory",
+      "description": "Celery daemon log directory",
       "type": "string",
       "required": "optional",
-      "default": "info",
-      "display_name": "Log level"
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ]
+    },
+    "celery/concurrency": {
+      "default": "8",
+      "calculated": false,
+      "display_name": "Celery processes running",
+      "description": "The number of celery processes to run",
+      "type": "string",
+      "required": "optional",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ]
     }
   },
-  "name": "celery"
+  "replacing": {
+  },
+  "recommendations": {
+  },
+  "platforms": {
+    "ubuntu": ">= 0.0.0"
+  }
 }
