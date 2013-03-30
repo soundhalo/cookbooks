@@ -171,6 +171,7 @@ action :setup_db_connection do
     source "local_environment.py.erb"
     group "#{node[:app][:group]}"
     owner "#{node[:app][:user]}"
+    mode "0644"
     cookbook 'app_django'
     variables(
       :environment => node[:app_django][:app][:environment]
@@ -178,7 +179,7 @@ action :setup_db_connection do
   end
   
   # setup log files folder
-  directory "/var/log/webapp" do
+  directory "/var/log/#{node[:app_django][:app][:name]}" do
     owner "#{node[:app][:user]}"
     group "#{node[:app][:group]}"
     mode "0755"
@@ -192,6 +193,7 @@ action :setup_db_connection do
     group "#{node[:app][:group]}"
     owner "#{node[:app][:user]}"
     cookbook 'app_django'
+    mode "0644"
     variables(
       :environement => node[:app_django][:app][:environment]
     )

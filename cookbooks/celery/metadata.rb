@@ -26,10 +26,10 @@ attribute "celery/log_level",
   :description  => "Celery daemon log level",
   :default      => "info"
 
-attribute "celery/workers",
-  :display_name => "Celery workers",
-  :description  => "Celery workers to be spawned",
-  :default      => "1"
+attribute "celery/concurrency",
+  :display_name => "Celery processes running",
+  :description  => "The number of celery processes to run",
+  :default      => "8"
 
 attribute "celery/events",
   :display_name => "Events enabled",

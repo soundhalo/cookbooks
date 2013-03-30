@@ -17,9 +17,8 @@
 
 # Generic settings
 default[:celery][:log_dir] = "/var/log/celery"
-default[:celery][:log_level] = "info"
+default[:celery][:log_level] = "INFO"
 default[:celery][:concurrency] = 8
-default[:celery][:workers] = node[:cpu][:total]
 default[:celery][:events] = true
 default[:celery][:user] = "celery"
 default[:celery][:group] = "celery"
