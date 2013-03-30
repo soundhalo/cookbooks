@@ -29,6 +29,8 @@ bash "run commands" do
     done
   EOH
   only_if { node[:app_django][:project][:custom_cmd] != "" }
+  user node[:app][:user]
+  group node[:app][:group]
 end
 
 rightscale_marker :end
