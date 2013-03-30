@@ -19,6 +19,12 @@
 
 rightscale_marker :begin
 
+# add our celery user to the web user group
+execute "add-secondary-group" do
+  command "usermod -a -G #{node[:app][:group]} #{node[:celery][:user]}"
+  action :nothing
+end
+
 group "#{node[:celery][:group]}" do
   action :create
 end
@@ -26,11 +32,8 @@ end
 user "#{node[:celery][:user]}" do
   gid "#{node[:celery][:group]}"
   system true
+  notifies :run, "execute[add-secondary-group]", :immediately
 end
 
-# add our celery user to the web user group
-execute "usermod -a -G #{node[:app][:group]} #{node[:celery][:user]}" do
-  action :run
-end
 
 rightscale_marker :end

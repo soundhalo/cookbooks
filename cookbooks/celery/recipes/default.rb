@@ -56,6 +56,13 @@ template "/etc/init.d/celeryd" do
     notifies :restart, "service[celeryd]"
 end
 
+# we have to all group writes
+log_dir = "/var/log/#{node[:app_django][:app][:name]}"
+execute "chmod g+w #{log_dir}/*.log" do
+  action :run
+  only_if { ::File.exists?("#{log_dir}") }
+end
+
 service "celeryd" do
     enabled true
     running true
