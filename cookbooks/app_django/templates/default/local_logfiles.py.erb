@@ -1,2 +1,2 @@
-DJANGO_LOG_FILE = "/var/log/webapp/django.log"
-CELERY_LOG_FILE = "/var/log/webapp/celery.log"
+DJANGO_LOG_FILE = "/var/log/<%= node[:app_django][:app][:name] %>/django.log"
+CELERY_LOG_FILE = "/var/log/<%= node[:app_django][:app][:name] %>/celery.log"
