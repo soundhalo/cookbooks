@@ -143,7 +143,7 @@ action :setup_db_connection do
   end
   
   # celery broker 
-  broker_url = "ampq://" +  node[:app_django][:celery][:broker_user]
+  broker_url = "amqp://" +  node[:app_django][:celery][:broker_user]
   broker_url += ":" + node[:app_django][:celery][:broker_password]
   broker_url += "@" + node[:app_django][:celery][:broker_host]
   broker_url += ":" + node[:app_django][:celery][:broker_port]
@@ -210,6 +210,7 @@ action :code_update do
 
   # Calling "repo" LWRP to download remote project repository
   # See cookbooks/repo/resources/default.rb for the "repo" resource.
+  log " The user context for git is: #{node[:app][:user]}"
   repo "default" do
     destination deploy_dir
     action node[:repo][:default][:perform_action].to_sym
