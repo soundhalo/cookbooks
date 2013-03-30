@@ -60,7 +60,6 @@ end
 log_dir = "/var/log/#{node[:app_django][:app][:name]}"
 execute "chmod g+w #{log_dir}/*.log" do
   action :run
-  only_if { ::File.exists?("#{log_dir}") }
 end
 
 service "celeryd" do
