@@ -1,119 +1,122 @@
 {
-  "license": "N/A",
-  "maintainer": "Steve Cassidy",
-  "maintainer_email": "steve@two-bulls.com",
-  "version": "0.0.1",
-  "description": "Installs/Configures celery",
-  "conflicting": {
-  },
-  "name": "celery",
-  "providing": {
-  },
-  "suggestions": {
-  },
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n",
-  "groupings": {
-  },
-  "dependencies": {
-    "app_django": ">= 0.0.0",
-    "app": ">= 0.0.0",
-    "python": ">= 0.0.0"
-  },
-  "recipes": {
-    "celery::user": "Create an user to run Celery daemon",
-    "celery::default": "Include Celery daemon install/configuration"
-  },
   "attributes": {
-    "celery/group": {
-      "default": "celery",
-      "calculated": false,
-      "display_name": "Celery group",
-      "description": "Celery daemon group",
-      "type": "string",
-      "required": "optional",
+    "celery/concurrency": {
       "recipes": [
 
       ],
+      "description": "The number of celery processes to run",
+      "calculated": false,
+      "required": "optional",
+      "type": "string",
       "choice": [
 
-      ]
+      ],
+      "display_name": "Celery processes running",
+      "default": "8"
     },
     "celery/events": {
-      "default": "true",
-      "calculated": false,
-      "display_name": "Events enabled",
+      "recipes": [
+
+      ],
       "description": "Enables celery events notifications",
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ],
-      "choice": [
-
-      ]
-    },
-    "celery/user": {
-      "default": "celery",
       "calculated": false,
-      "display_name": "Celery user",
-      "description": "Celery daemon user",
-      "type": "string",
       "required": "optional",
-      "recipes": [
-
-      ],
+      "type": "string",
       "choice": [
 
-      ]
-    },
-    "celery/log_level": {
-      "default": "info",
-      "calculated": false,
-      "display_name": "Log level",
-      "description": "Celery daemon log level",
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
       ],
-      "choice": [
-
-      ]
+      "display_name": "Events enabled",
+      "default": "true"
     },
     "celery/log_dir": {
-      "default": "/var/log/celery",
-      "calculated": false,
-      "display_name": "Log directory",
+      "recipes": [
+
+      ],
       "description": "Celery daemon log directory",
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ],
-      "choice": [
-
-      ]
-    },
-    "celery/concurrency": {
-      "default": "8",
       "calculated": false,
-      "display_name": "Celery processes running",
-      "description": "The number of celery processes to run",
-      "type": "string",
       "required": "optional",
+      "type": "string",
+      "choice": [
+
+      ],
+      "display_name": "Log directory",
+      "default": "/var/log/celery"
+    },
+    "celery/log_level": {
       "recipes": [
 
       ],
+      "description": "Celery daemon log level",
+      "calculated": false,
+      "required": "optional",
+      "type": "string",
       "choice": [
 
-      ]
+      ],
+      "display_name": "Log level",
+      "default": "info"
+    },
+    "celery/group": {
+      "recipes": [
+
+      ],
+      "description": "Celery daemon group",
+      "calculated": false,
+      "required": "optional",
+      "type": "string",
+      "choice": [
+
+      ],
+      "display_name": "Celery group",
+      "default": "celery"
+    },
+    "celery/user": {
+      "recipes": [
+
+      ],
+      "description": "Celery daemon user",
+      "calculated": false,
+      "required": "optional",
+      "type": "string",
+      "choice": [
+
+      ],
+      "display_name": "Celery user",
+      "default": "celery"
     }
   },
   "replacing": {
   },
-  "recommendations": {
+  "providing": {
   },
+  "suggestions": {
+  },
+  "license": "N/A",
+  "recipes": {
+    "celery::do_stop": "Stops the celery daemon",
+    "celery::default": "Include Celery daemon install/configuration",
+    "celery::user": "Create an user to run Celery daemon",
+    "celery::do_start": "Starts the celery daemon",
+    "celery::do_restart": "Restarts the celery daemon"
+  },
+  "dependencies": {
+    "python": ">= 0.0.0",
+    "app_django": ">= 0.0.0",
+    "app": ">= 0.0.0"
+  },
+  "description": "Installs/Configures celery",
   "platforms": {
     "ubuntu": ">= 0.0.0"
-  }
+  },
+  "conflicting": {
+  },
+  "version": "0.0.1",
+  "groupings": {
+  },
+  "recommendations": {
+  },
+  "maintainer": "Steve Cassidy",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n",
+  "maintainer_email": "steve@two-bulls.com",
+  "name": "celery"
 }

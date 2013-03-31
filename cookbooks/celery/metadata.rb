@@ -15,6 +15,12 @@ recipe           "celery::default",
   "Include Celery daemon install/configuration"
 recipe           "celery::user",
   "Create an user to run Celery daemon"
+recipe           "celery::do_restart",
+  "Restarts the celery daemon"
+recipe           "celery::do_start",
+  "Starts the celery daemon"
+recipe           "celery::do_stop",
+  "Stops the celery daemon"
 
 attribute "celery/log_dir",
   :display_name => "Log directory",
