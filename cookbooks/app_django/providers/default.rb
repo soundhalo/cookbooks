@@ -113,7 +113,11 @@ action :setup_vhost do
   # See https://github.com/rightscale/cookbooks/blob/master/apache2/definitions/web_app.rb for the "web_app" definition. 
   web_app "http-#{django_port}-#{node[:web_apache][:server_name]}.vhost" do
     template "apache_mod_wsgi_vhost.erb"
+    approot project_root
     docroot project_root + "/" + node[:app_django][:app][:name]
+    wsgi_group node[:web_apache][:wsgi_group]
+    wsgi_threads node[:web_apache][:wsgi_threads]
+    wsgi_processes node[:web_apache][:wsgi_processes]
     vhost_port django_port.to_s
     server_name node[:web_apache][:server_name]
     allow_override node[:web_apache][:allow_override]

@@ -40,7 +40,10 @@
       LoadModule wsgi_module modules/mod_wsgi.so
   </IfModule>
 
+  WSGIPassAuthorization On
   WSGIScriptAlias / <%=@params[:docroot]%>/wsgi.py
+  WSGIDaemonProcess <%= @params[:wsgi_group] %> python-path=<%=@params[:approot]%> processes=<%= @params[:wsgi_processes] %> threads=<%= @params[:wsgi_threads] %> display-name=%{GROUP}
+  WSGIProcessGroup <%= @params[:wsgi_group] %>
 
   <Directory "<%=@params[:docroot]%>">
     AllowOverride <%= @params[:allow_override] %>
