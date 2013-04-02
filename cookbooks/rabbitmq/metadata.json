@@ -1,0 +1,285 @@
+{
+  "license": "Apache 2.0",
+  "providing": {
+  },
+  "maintainer_email": "cookbooks@opscode.com",
+  "name": "rabbitmq",
+  "version": "2.0.0",
+  "recommendations": {
+  },
+  "platforms": {
+    "redhat": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "linuxmint": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "amazon": ">= 0.0.0",
+    "oracle": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "scientific": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "smartos": ">= 0.0.0"
+  },
+  "maintainer": "Opscode, Inc.",
+  "long_description": "",
+  "attributes": {
+    "rabbitmq/cluster": {
+      "required": "optional",
+      "default": "no",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ clustering",
+      "description": "Whether to activate clustering.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/mnesiadir": {
+      "required": "optional",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ Mnesia database directory",
+      "description": "Path to the directory for Mnesia database files.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/port": {
+      "required": "optional",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ server port",
+      "description": "TCP port to bind.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/disabled_users": {
+      "required": "optional",
+      "default": [
+
+      ],
+      "choice": [
+
+      ],
+      "display_name": "Disabled users",
+      "description": "List all users that will be deactivated",
+      "calculated": false,
+      "type": "array",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/enabled_users": {
+      "required": "optional",
+      "default": [
+        {
+          "name": "guest",
+          "rights": [
+            {
+              "vhost": null,
+              "write": ".*",
+              "read": ".*",
+              "conf": ".*"
+            }
+          ],
+          "password": "guest"
+        }
+      ],
+      "choice": [
+
+      ],
+      "display_name": "Users and their rights on rabbitmq instance",
+      "description": "Users and description of their rights",
+      "calculated": false,
+      "type": "array",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/nodename": {
+      "required": "optional",
+      "default": "node['hostname']",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ Erlang node name",
+      "description": "The Erlang node name for this server.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/config": {
+      "required": "optional",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ config file to load",
+      "description": "Path to the rabbitmq.config file, if any.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/erlang_cookie": {
+      "required": "optional",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ Erlang cookie",
+      "description": "Access cookie for clustering nodes.  There is no default.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/disabled_plugins": {
+      "required": "optional",
+      "default": [
+
+      ],
+      "choice": [
+
+      ],
+      "display_name": "Disabled plugins",
+      "description": "List all plugins that will be deactivated",
+      "calculated": false,
+      "type": "array",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/cluster_config": {
+      "required": "optional",
+      "default": "/etc/rabbitmq/rabbitmq_cluster.config",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ clustering configuration file",
+      "description": "Path to the clustering configuration file, if cluster is yes.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq": {
+      "required": "optional",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ",
+      "description": "Hash of RabbitMQ attributes",
+      "calculated": false,
+      "type": "hash",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/cluster_disk_nodes": {
+      "required": "optional",
+      "default": [
+
+      ],
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ cluster disk nodes",
+      "description": "Array of member Erlang nodenames for the disk-based storage nodes in the cluster.",
+      "calculated": false,
+      "type": "array",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/address": {
+      "required": "optional",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ server IP address",
+      "description": "IP address to bind.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/enabled_plugins": {
+      "required": "optional",
+      "default": [
+
+      ],
+      "choice": [
+
+      ],
+      "display_name": "Enabled plugins",
+      "description": "List all plugins that will be activated",
+      "calculated": false,
+      "type": "array",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/virtualhosts": {
+      "required": "optional",
+      "default": [
+
+      ],
+      "choice": [
+
+      ],
+      "display_name": "Virtualhosts on rabbitmq instance",
+      "description": "List all virtualhosts that will exist",
+      "calculated": false,
+      "type": "array",
+      "recipes": [
+
+      ]
+    },
+    "rabbitmq/logdir": {
+      "required": "optional",
+      "choice": [
+
+      ],
+      "display_name": "RabbitMQ log directory",
+      "description": "Path to the directory for log files.",
+      "calculated": false,
+      "type": "string",
+      "recipes": [
+
+      ]
+    }
+  },
+  "description": "Installs and configures RabbitMQ server",
+  "dependencies": {
+    "erlang": ">= 0.9"
+  },
+  "groupings": {
+  },
+  "suggestions": {
+  },
+  "recipes": {
+    "rabbitmq::plugin_management": "Manage plugins with node attributes",
+    "rabbitmq::cluster": "Set up RabbitMQ clustering.",
+    "rabbitmq::virtualhost_management": "Manage virtualhost with node attributes",
+    "rabbitmq": "Install and configure RabbitMQ",
+    "rabbitmq::user_management": "Manage users with node attributes"
+  },
+  "replacing": {
+  },
+  "conflicting": {
+  }
+}
