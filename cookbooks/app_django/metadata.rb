@@ -24,6 +24,8 @@ recipe "app_django::run_custom_django_commands",
   "Runs specific user defined commands. Commands will be executed" +
   " in the app directory."
 
+recipe "app_django::install_PIL",
+  "Installs the python imaging library properly with jpeg and png support"
 
 attribute "app_django/app/debug_mode",
   :display_name => "Django App Debug Mode",
