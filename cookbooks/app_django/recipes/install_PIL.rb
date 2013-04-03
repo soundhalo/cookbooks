@@ -3,11 +3,10 @@ rightscale_marker :begin
 log "  Installing python imaging libraries"
 
 # Install python imaging
+imaging_packages = ["python-imaging","libjpeg-dev","libfreetype6","libfreetype6-dev","zlib1g-dev"]
 
-case node[:platform]
-when "ubuntu"
-  packages = ["python-imaging","libjpeg-dev","libfreetype6","libfreetype6-dev","zlib1g-dev"]
-  packages.each |pack| do
+if node[:platform] ~= "ubuntu"
+  imaging_packages.each do |pack| 
     package pack
   end
 else
