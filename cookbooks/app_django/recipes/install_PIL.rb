@@ -6,7 +6,10 @@ log "  Installing python imaging libraries"
 
 case node[:platform]
 when "ubuntu"
-  execute "apt-get build-dep python-imaging"
+  packages = ["python-imaging","libjpeg-dev","libfreetype6","libfreetype6-dev","zlib1g-dev"]
+  packages.each |pack| do
+    package pack
+  end
 else
   raise "this script only works with ubuntu, exiting "
 end
