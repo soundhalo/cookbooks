@@ -5,7 +5,7 @@ log "  Installing python imaging libraries"
 # Install python imaging
 imaging_packages = ["python-imaging","libjpeg-dev","libfreetype6","libfreetype6-dev","zlib1g-dev"]
 
-if node[:platform] ~= "ubuntu"
+if node[:platform] =~ /ubuntu/
   imaging_packages.each do |pack| 
     package pack
   end
