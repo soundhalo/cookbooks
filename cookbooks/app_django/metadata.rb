@@ -83,6 +83,14 @@ attribute "app_django/app/name",
   :description =>
     "Used to configure local_[x].py files",
   :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/celery/broker_type",
+  :display_name => "The broker type:",
+  :choice => ["amqp", "redis", "mongo", "django"],
+  :default => "amqp",
+  :description =>
+    "The celery broker type",
+  :recipes => ["app_django::setup_server_1_4"]
   
 attribute "app_django/celery/broker_host",
   :display_name => "The broker host",

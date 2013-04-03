@@ -147,7 +147,8 @@ action :setup_db_connection do
   end
   
   # celery broker 
-  broker_url = "amqp://" +  node[:app_django][:celery][:broker_user]
+  broker_url = node[:app_django][:celery][:broker_type]
+  broker_url += "://" +  node[:app_django][:celery][:broker_user]
   broker_url += ":" + node[:app_django][:celery][:broker_password]
   broker_url += "@" + node[:app_django][:celery][:broker_host]
   broker_url += ":" + node[:app_django][:celery][:broker_port]
