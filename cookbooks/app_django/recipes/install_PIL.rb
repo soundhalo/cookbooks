@@ -3,8 +3,12 @@ rightscale_marker :begin
 log "  Installing python imaging libraries"
 
 # Install python imaging
-["build-dep","python-imaging"].each |pac| do
-  package pac
+package "build-dep" do
+  action :install
+end
+
+package "python-imaging" do 
+  action :install
 end
 
 log "  Create symlinks for libraries"
