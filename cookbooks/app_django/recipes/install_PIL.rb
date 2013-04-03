@@ -3,12 +3,12 @@ rightscale_marker :begin
 log "  Installing python imaging libraries"
 
 # Install python imaging
-package "build-dep" do
-  action :install
-end
 
-package "python-imaging" do 
-  action :install
+case node[:platform]
+when "ubuntu"
+  execute "apt-get build-dep python-imaging"
+else
+  raise "this script only works with ubuntu, exiting "
 end
 
 log "  Create symlinks for libraries"
