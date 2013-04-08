@@ -1,5 +1,8 @@
 #wget https://www.tracelytics.com/install_tracelytics.sh
 #sh ./install_tracelytics.sh [access key]
+
+rightscale_marker :begin
+
 sh_file = "install_tracelytics.sh"
 
 # get client
@@ -18,3 +21,5 @@ end
 
 # restart apache
 action_restart
+
+rightscale_marker :end
