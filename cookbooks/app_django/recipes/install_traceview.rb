@@ -6,7 +6,7 @@ rightscale_marker :begin
 sh_file = "install_tracelytics.sh"
 
 # get client
-remote_file "/tmp/#{sh_file}}" do
+remote_file "/tmp/#{sh_file}" do
  source "https://www.tracelytics.com/#{sh_file}" 
  mode "0644"
 end
