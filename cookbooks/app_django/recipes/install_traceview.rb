@@ -20,6 +20,9 @@ package "libapache2-mod-oboe" do
 end
 
 # restart apache
-action_restart
+service "apache2" do
+  action :reload
+  persist false
+end
 
 rightscale_marker :end
