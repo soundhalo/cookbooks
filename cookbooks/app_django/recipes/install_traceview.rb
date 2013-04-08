@@ -19,6 +19,12 @@ package "libapache2-mod-oboe" do
   action :install
 end
 
+# install oboe
+python_pip "oboe" do
+  options "--extra-index-url=http://pypi.tracelytics.com"
+  action :install
+end
+
 # restart apache
 service "apache2" do
   action :reload
