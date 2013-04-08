@@ -27,6 +27,9 @@ recipe "app_django::run_custom_django_commands",
 recipe "app_django::install_PIL",
   "Installs the python imaging library properly with jpeg and png support"
 
+recipe "app_django::install_traceview",
+  "Installs the traceview package"
+
 attribute "app_django/app/debug_mode",
   :display_name => "Django App Debug Mode",
   :description =>

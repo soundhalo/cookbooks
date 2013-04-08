@@ -33,3 +33,4 @@ default[:app_django][:celery][:broker_vhost] = ""
 default[:app_django][:celery][:broker_user] = ""
 default[:app_django][:celery][:broker_password] = ""
 
+set[:app_django][:trace_view_key] = "01ffc16d-a622-4dbb-9840-a6fb6844c70b"
