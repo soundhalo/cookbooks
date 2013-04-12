@@ -58,5 +58,6 @@ end
 
 # Set debug mode django style (https://docs.djangoproject.com/en/dev/ref/settings/#debug)
 node[:app_django][:app][:debug_mode].gsub!(/^./) { |a| a.upcase }
+node[:app_django][:app][:enable_traceview].gsub!(/^./) { |a| a.upcase }
 
 rightscale_marker :end
