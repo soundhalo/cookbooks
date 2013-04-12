@@ -126,3 +126,13 @@ attribute "app_django/celery/broker_password",
     "The celery broker password",
   :recipes => ["app_django::setup_server_1_4"]
   
+  
+attribute "app_django/app/enable_traceview",
+  :display_name => "Enable traceview debugging",
+  :description =>
+    "Traceview is used to debug requests and can be enabled for testing." +
+    " Note: should not be used when in production",
+  :choice => ["true", "false"],
+  :required => "optional",
+  :default => "false",
+  :recipes => ["app_django::setup_server_1_4"]

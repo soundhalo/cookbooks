@@ -17,3 +17,5 @@ DATABASES = {
 
 # celery info
 BROKER_URL = '<%= @vars[:broker_url] %>'
+
+TRACEVIEW_ENABLED = <%= node[:app_django][:app][:enable_traceview] %>
