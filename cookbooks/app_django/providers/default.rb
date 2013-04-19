@@ -242,6 +242,7 @@ action :code_update do
   # Calls the :restart action.
   if restart_webserver
     action_restart
+  end
 
 end
 
