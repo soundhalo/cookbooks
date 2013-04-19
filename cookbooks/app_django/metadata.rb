@@ -153,6 +153,5 @@ attribute "app_django/is_master",
   "1) All crons will be run on this instance"+
   "2) All django database operations will run on this instance",
   :choice => ["true", "false"],
-  :required => "optional",
   :default => "false",
   :recipes => ["app_django::update_code","app_django::install_crons"]
