@@ -210,6 +210,7 @@ end
 action :code_update do
 
   deploy_dir = new_resource.destination
+  restart_webserver = new_resource.restart
 
   log "  Starting code update sequence"
   log "  Current project doc root is set to #{deploy_dir}"
@@ -239,7 +240,8 @@ action :code_update do
 
   # Restarting apache
   # Calls the :restart action.
-  action_restart
+  if restart_webserver
+    action_restart
 
 end
 

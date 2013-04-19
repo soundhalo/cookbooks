@@ -38,6 +38,7 @@ actions :reload
 actions :code_update
   #Destination for source code download
   attribute :destination, :kind_of => String
+  attribute :restart, :equal_to => [true, false], :default => true
 
 # Set up the database connection file
 # Action designed to setup APP LWRP with common parameters required for database configuration file creation

@@ -36,3 +36,13 @@ default[:app_django][:celery][:broker_password] = ""
 
 set[:app_django][:trace_view_key] = "01ffc16d-a622-4dbb-9840-a6fb6844c70b"
 set[:app_django][:app][:enable_newrelic] = "True"
+
+# the master app server will run db sync and migration
+# operations as well as have cron jobs
+default[:app_django][:is_master] = false
+
+# the crons to be run
+set[:app_django][:crons] = [{"command":"update_facebook_counts", "hour":"23", "minute":"00"},
+                            {"command":"cleanup_objects", "hour":"23", "minute":"00"},
+                            {"command":"extend_facebook_tokens", "hour":"23", "minute":"00"},
+                            {"command":"settle_payments", "hour":"*", "minute":"00"}]

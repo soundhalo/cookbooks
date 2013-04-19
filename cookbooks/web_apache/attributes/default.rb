@@ -39,5 +39,5 @@ set[:web_apache][:maintenance_file] = "/home/webapp/system/maintenance.html"
 default[:web_apache][:allow_override] = "None"
 
 set[:web_apache][:wsgi_group] = "#{web_apache[:application_name]}"
-set[:web_apache][:wsgi_threads] = "15"
-set[:web_apache][:wsgi_processes] = "2"
+set[:web_apache][:wsgi_threads] = "5"
+set[:web_apache][:wsgi_processes] = "16"

@@ -30,6 +30,13 @@ recipe "app_django::install_PIL",
 recipe "app_django::install_traceview",
   "Installs the traceview package"
 
+recipe "app_django::install_crons",
+  "Installs all crons needed by the app"
+
+recipe "app_django::update_code",
+  "Use this update recipe when the instance is running to checkout code" +
+  " and run correct methods"
+
 attribute "app_django/app/debug_mode",
   :display_name => "Django App Debug Mode",
   :description =>
@@ -136,3 +143,16 @@ attribute "app_django/app/enable_traceview",
   :required => "optional",
   :default => "false",
   :recipes => ["app_django::setup_server_1_4"]
+  
+  
+attribute "app_django/is_master",
+  :display_name => "Django App Master",
+  :description =>
+  "Tags this instance as the django app master, for which the following" +
+  "actions will occur: " +
+  "1) All crons will be run on this instance"+
+  "2) All django database operations will run on this instance",
+  :choice => ["true", "false"],
+  :required => "optional",
+  :default => "false",
+  :recipes => ["app_django::update_code","app_django::install_crons"]
