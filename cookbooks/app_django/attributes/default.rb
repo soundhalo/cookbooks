@@ -42,7 +42,7 @@ set[:app_django][:app][:enable_newrelic] = "True"
 default[:app_django][:is_master] = false
 
 # the crons to be run
-set[:app_django][:crons] = [{"command":"update_facebook_counts", "hour":"23", "minute":"00"},
-                            {"command":"cleanup_objects", "hour":"23", "minute":"00"},
-                            {"command":"extend_facebook_tokens", "hour":"23", "minute":"00"},
-                            {"command":"settle_payments", "hour":"*", "minute":"00"}]
+set[:app_django][:crons] = [{"command" => "update_facebook_counts", "hour" => "23", "minute" => "00"},
+                            {"command" => "cleanup_objects", "hour" => "23", "minute" => "00"},
+                            {"command" => "extend_facebook_tokens", "hour" => "23", "minute" => "00"},
+                            {"command" => "settle_payments", "hour" => "*", "minute" => "00"}]
