@@ -3,7 +3,7 @@ rightscale_marker :begin
 if node[:app_django][:is_master] == "true"
   log "  Installing crons into tab"
   node[:app_django][:crons].each do |cron|
-    cron "settle_payments" do
+    cron cron[:command] do
       command "#{node[:app_django][:python_bin]} #{node[:app][:destination]}/manage.py #{cron[:command]}"
       minute cron[:minute]
       hour cron[:hour]
