@@ -10,7 +10,7 @@ end
 
 commands = ['collectstatic --noinput -l']
 # if we're the master then sync db and migrate as well
-if node[:app_django][:is_master]
+if node[:app_django][:is_master] == "true"
   commands.push('syncdb --noinput','migrate --noinput')
 end
 

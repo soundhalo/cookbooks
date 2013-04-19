@@ -1,6 +1,6 @@
 rightscale_marker :begin
 
-if node[:app_django][:is_master]
+if node[:app_django][:is_master] == "true"
   log "  Installing crons into tab"
   crons.each do |cron|
     cron "settle_payments" do
