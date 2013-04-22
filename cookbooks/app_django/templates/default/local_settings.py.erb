@@ -20,3 +20,5 @@ BROKER_URL = '<%= @vars[:broker_url] %>'
 
 TRACEVIEW_ENABLED = <%= node[:app_django][:app][:enable_traceview] %>
 ENABLE_NEWRELIC = <%= node[:app_django][:app][:enable_newrelic] %>
+
+SSL_REDIRECTS_ENABLED = True
