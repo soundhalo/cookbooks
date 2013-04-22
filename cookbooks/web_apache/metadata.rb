@@ -44,6 +44,9 @@ recipe "web_apache::do_enable_maintenance_mode",
 recipe "web_apache::do_disable_maintenance_mode",
   "Disables maintenance mode for Apache2 webserver"
 
+recipe "web_apache::add_ssl_certificates",
+  "Adds ssl certificates to the webserver"
+
 depends "apache2"
 depends "rightscale"
 
@@ -77,7 +80,8 @@ attribute "web_apache/ssl_enable",
   :recipes => [
     "web_apache::install_apache",
     "web_apache::setup_frontend_ssl_vhost",
-    "web_apache::setup_frontend"
+    "web_apache::setup_frontend",
+    "web_apache::add_ssl_certificates"
   ],
   :required => "optional",
   :choice => ["true", "false"],
@@ -91,7 +95,8 @@ attribute "web_apache/ssl_certificate",
   :default => "",
   :recipes => [
     "web_apache::setup_frontend_ssl_vhost",
-    "web_apache::setup_frontend"
+    "web_apache::setup_frontend",
+    "web_apache::add_ssl_certificates"
   ]
 
 attribute "web_apache/ssl_certificate_chain",
@@ -102,7 +107,8 @@ attribute "web_apache/ssl_certificate_chain",
   :default => "",
   :recipes => [
     "web_apache::setup_frontend_ssl_vhost",
-    "web_apache::setup_frontend"
+    "web_apache::setup_frontend",
+    "web_apache::add_ssl_certificates"
   ]
 
 attribute "web_apache/ssl_key",
@@ -113,7 +119,8 @@ attribute "web_apache/ssl_key",
   :default => "",
   :recipes => [
     "web_apache::setup_frontend_ssl_vhost",
-    "web_apache::setup_frontend"
+    "web_apache::setup_frontend",
+    "web_apache::add_ssl_certificates"
   ]
 
 attribute "web_apache/ssl_passphrase",
@@ -124,7 +131,8 @@ attribute "web_apache/ssl_passphrase",
   :default => "",
   :recipes => [
     "web_apache::setup_frontend_ssl_vhost",
-    "web_apache::setup_frontend"
+    "web_apache::setup_frontend",
+    "web_apache::add_ssl_certificates"
   ]
 
 attribute "web_apache/application_name",

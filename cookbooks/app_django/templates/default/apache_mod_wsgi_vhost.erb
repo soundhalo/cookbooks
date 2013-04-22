@@ -10,6 +10,9 @@
 #
 # HTTP-only virtual host template with mod_wsgi
 #
+
+WSGIDaemonProcess <%= @params[:wsgi_group] %> python-path=<%=@params[:approot]%> processes=<%= @params[:wsgi_processes] %> threads=<%= @params[:wsgi_threads] %> display-name=%{GROUP}
+
 <VirtualHost *:<%=@params[:vhost_port]%>>
   ServerName <%=@params[:server_name] %>
   UseCanonicalName On
@@ -40,10 +43,7 @@
       LoadModule wsgi_module modules/mod_wsgi.so
   </IfModule>
 
-  WSGIPassAuthorization On
-  WSGIScriptAlias / <%=@params[:docroot]%>/wsgi.py
-  WSGIDaemonProcess <%= @params[:wsgi_group] %> python-path=<%=@params[:approot]%> processes=<%= @params[:wsgi_processes] %> threads=<%= @params[:wsgi_threads] %> display-name=%{GROUP}
-  WSGIProcessGroup <%= @params[:wsgi_group] %>
+  WSGIScriptAlias / <%=@params[:docroot]%>/wsgi.py process-group=<%= @params[:wsgi_group] %> application-group=%{GLOBAL}
 
   <Directory "<%=@params[:docroot]%>">
     AllowOverride <%= @params[:allow_override] %>
@@ -91,5 +91,77 @@
 
   SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
 
-  
 </VirtualHost>
+
+<% if @params[:ssl_enable] == "true" %>
+
+<VirtualHost *:<%=@params[:vhost_port_ssl]%>>
+  ServerName <%=@params[:server_name] %>
+
+  SSLEngine on
+  SSLProtocol all -SSLv2
+  SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM:+LOW
+
+  RequestHeader set X_FORWARDED_PROTO 'https'
+
+  SSLCertificateFile <%= @params[:ssl_certificate_file] %>
+  SSLCertificateKeyFile <%= @params[:ssl_key_file] %>
+  SSLCertificateChainFile <%= @params[:ssl_certificate_chain_file] %>
+
+  UseCanonicalName On
+  <DirectoryMatch  /\.git/|/\.svn/ >
+    Deny from all
+  </DirectoryMatch>
+
+  # See more details at https://docs.djangoproject.com/en/1.4/howto/deployment/wsgi/modwsgi/#serving-files
+  Alias /robots.txt <%=@params[:docroot]%>/static/robots.txt
+  Alias /favicon.ico <%=@params[:docroot]%>/static/favicon.ico
+
+  AliasMatch ^/([^/]*\.css) <%=@params[:docroot]%>/static/css/$1
+
+  Alias /media/ <%=@params[:docroot]%>/media/
+  Alias /static/ <%=@params[:docroot]%>/static/
+
+  <IfModule !wsgi_module>
+      LoadModule wsgi_module modules/mod_wsgi.so
+  </IfModule>
+
+  WSGIScriptAlias / <%=@params[:docroot]%>/wsgi.py process-group=<%= @params[:wsgi_group] %> application-group=%{GLOBAL}
+
+  RewriteEngine on
+
+  # Include Rewrite rules from server config for maintenance mode.
+  # Rewrite rules are not inherited in VirtualHost Directive, so must
+  # explicitly include it here.
+  Include conf.d/maintenance.conf
+
+  # Enable status page for monitoring purposes
+  RewriteCond %{REMOTE_ADDR} ^(127.0.0.1)
+  RewriteRule ^(/server-status) $1 [H=server-status,L]
+
+  <% if (@params[:apache_serve_local_files]=="true") %>
+  # Serve any existing local files directly (except actionable ones)
+  RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} -f
+  RewriteCond %{REQUEST_FILENAME} !\.php|\.jsp|\.do|\.action$ [NC]
+  RewriteRule ^/(.*)$ /$1 [QSA,L]
+
+  RewriteCond %{DOCUMENT_ROOT}/%{REQUEST_FILENAME} -d
+  RewriteRule ^/(.*)$ /$1 [QSA,L]
+  <% end %>
+
+  # Setup the logs in the appropriate directory
+  CustomLog <%= @params[:apache_log_dir]%>/<%=@params[:server_name]%>-access-ssl.log combined
+  ErrorLog  <%= @params[:apache_log_dir]%>/<%=@params[:server_name]%>-error-ssl.log
+  LogLevel warn
+
+
+  # Deflate
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml application/xml application/xhtml+xml text/javascript text/css application/x-javascript
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4.0[678] no-gzip
+  BrowserMatch bMSIE !no-gzip !gzip-only-text/html
+
+  SetEnvIf User-Agent ".*MSIE.*" nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+
+</VirtualHost>
+<% end %>

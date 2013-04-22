@@ -20,7 +20,7 @@ when "centos", "redhat"
 end
 
 # Disabling ssl by default
-default[:web_apache][:ssl_enable] = false
+default[:web_apache][:ssl_enable] = "false"
 default[:web_apache][:ssl_certificate] = nil
 default[:web_apache][:ssl_certificate_chain] = nil
 default[:web_apache][:ssl_key] = nil
