@@ -108,6 +108,13 @@ action :setup_vhost do
   # See cookbooks/app/definitions/app_add_listen_port.rb for the "app_add_listen_port" definition.
   app_add_listen_port django_port
 
+  ssl_dir = "/etc/#{node[:web_apache][:config_subdir]}/ssl"
+
+  ssl_certificate_file = ::File.join(ssl_dir, "#{node[:web_apache][:server_name]}.crt")
+  ssl_key_file = ::File.join(ssl_dir, "#{node[:web_apache][:server_name]}.key")
+  ssl_certificate_chain_file = ::File.join(ssl_dir, "gd_bundle.crt")
+
+
   # Configure apache vhost for Django
   log "  Creating apache.vhost"
   # See https://github.com/rightscale/cookbooks/blob/master/apache2/definitions/web_app.rb for the "web_app" definition. 
@@ -123,6 +130,11 @@ action :setup_vhost do
     allow_override node[:web_apache][:allow_override]
     apache_log_dir node[:apache][:log_dir]
     apache_serve_local_files node[:app_django][:apache][:serve_local_files]
+    ssl_enable node[:web_apache][:ssl_enable]
+    vhost_port_ssl "443"
+    ssl_certificate_file ssl_certificate_file
+    ssl_key_file ssl_key_file
+    ssl_certificate_chain_file ssl_certificate_chain_file
     cookbook "app_django"
   end
 
