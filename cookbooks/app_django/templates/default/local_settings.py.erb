@@ -22,3 +22,16 @@ TRACEVIEW_ENABLED = <%= node[:app_django][:app][:enable_traceview] %>
 ENABLE_NEWRELIC = <%= node[:app_django][:app][:enable_newrelic] %>
 
 SSL_REDIRECTS_ENABLED = True
+
+CACHE_TIMEOUT = <%= node[:app_django][:app][:cache][:timeout] %>
+
+CACHES = {
+  'default': {
+    'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+    'LOCATION': '<%= node[:app_django][:app][:cache][:url] %>:<%= node[:app_django][:app][:cache][:port] %>',
+    'TIMEOUT': CACHE_TIMEOUT,
+    'OPTIONS': {
+      'MAX_ENTRIES': <%= node[:app_django][:app][:cache][:max_entries] %>,
+    },
+  }
+}

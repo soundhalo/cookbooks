@@ -144,3 +144,25 @@ attribute "app_django/is_master",
   :choice => ["true", "false"],
   :default => "false",
   :recipes => ["app_django::update_code","app_django::install_crons","app_django::run_django_commands"]
+  
+attribute "app_django/app/cache/url",
+  :display_name => "memcached url",
+  :description =>
+    "most likely 127.0.0.1",
+  :default => "127.0.0.1",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/app/cache/port",
+  :display_name => "memcached port",
+  :default => "11211",
+  :description =>
+    "most likely 11211",
+  :recipes => ["app_django::setup_server_1_4"]
+  
+attribute "app_django/app/cache/timeout",
+  :display_name => "cache timeout in seconds",
+  :default => "1",
+  :description =>
+    "should be short, 1 or 2 seconds",
+  :recipes => ["app_django::setup_server_1_4"]
+  

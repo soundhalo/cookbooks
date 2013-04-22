@@ -44,3 +44,10 @@ set[:app_django][:crons] = [{"command" => "update_facebook_counts", "hour" => "2
                             {"command" => "cleanup_objects", "hour" => "23", "minute" => "00"},
                             {"command" => "extend_facebook_tokens", "hour" => "23", "minute" => "00"},
                             {"command" => "settle_payments", "hour" => "*", "minute" => "00"}]
+                            
+# django cache setting
+default[:app_django][:app][:cache][:timeout] = 1 # seconds
+default[:app_django][:app][:cache][:url] = "127.0.0.1"
+default[:app_django][:app][:cache][:port] = "11211"
+default[:app_django][:app][:cache][:max_entries] = 1000
+
