@@ -20,7 +20,7 @@ depends "python"
 recipe "app_django::setup_server_1_4",
   "Installs the Django application server."
 
-recipe "app_django::run_custom_django_commands",
+recipe "app_django::run_django_commands",
   "Runs specific user defined commands. Commands will be executed" +
   " in the app directory."
 
@@ -33,7 +33,7 @@ recipe "app_django::install_traceview",
 recipe "app_django::install_crons",
   "Installs all crons needed by the app"
 
-recipe "app_django::update_code",
+recipe "app_django::update_code_and_run_commands",
   "Use this update recipe when the instance is running to checkout code" +
   " and run correct methods"
 
@@ -68,17 +68,6 @@ attribute "app_django/project/opt_pip_list",
   :required => "optional",
   :default => "",
   :recipes => ["app_django::setup_server_1_4"]
-
-attribute "app_django/project/custom_cmd",
-  :display_name => "Custom Django command",
-  :description =>
-    "A comma-separated list of optional commands which will be executed in" +
-    " the app directory." +
-    " Example: manage.py syncdb, manage.py migrate, manage.py loaddata" +
-    " ./fixtures/example_initial_data.json",
-  :required => "optional",
-  :default => "",
-  :recipes => ["app_django::run_custom_django_commands"]
 
 attribute "app_django/app/environment",
   :display_name => "The environment to use",
@@ -154,4 +143,4 @@ attribute "app_django/is_master",
   "2) All django database operations will run on this instance",
   :choice => ["true", "false"],
   :default => "false",
-  :recipes => ["app_django::update_code","app_django::install_crons"]
+  :recipes => ["app_django::update_code","app_django::install_crons","app_django::run_django_commands"]

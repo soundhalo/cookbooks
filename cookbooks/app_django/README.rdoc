@@ -100,7 +100,6 @@ Note: Only "internal" cookbook attributes are described here. Descriptions of at
 * <tt>node[:app_django][:pip_bin]</tt> - Path to Python pip bin directory.
 * <tt>node[:app_django][:python_bin]</tt> - Path to Python bin directory.
 * <tt>node[:app_django][:project][:opt_pip_list]</tt> - A list of additional python packages, required for django application
-* <tt>node[:app_django][:project][:custom_cmd]</tt> - A list of python commands required for django application initialization.
 
 === Templates:
 

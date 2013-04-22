@@ -20,8 +20,6 @@ set[:app_django][:pip_bin] = "/usr/bin/pip"
 set[:app_django][:python_bin] = "/usr/bin/python"
 # List of additional python packages, required for django application
 default[:app_django][:project][:opt_pip_list] = ""
-# List of python commands required for django application initialization
-default[:app_django][:project][:custom_cmd] = ""
 
 default[:app_django][:app][:environment] = "production"
 default[:app_django][:app][:name] = ""
