@@ -1,66 +1,109 @@
 {
+  "suggestions": {
+  },
+  "long_description": "pgbouncer Cookbook\n==================\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - pgbouncer needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### pgbouncer::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['pgbouncer']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### pgbouncer::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `pgbouncer` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[pgbouncer]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n",
   "groupings": {
   },
-  "license": "All rights reserved",
-  "description": "Installs/Configures pgbouncer",
-  "version": "0.1.0",
-  "recipes": {
-    "pgbouncer::default": "Installs and configures pgbouncer"
-  },
   "replacing": {
-  },
-  "recommendations": {
   },
   "platforms": {
     "ubuntu": ">= 0.0.0",
     "debian": ">= 0.0.0"
   },
-  "suggestions": {
-  },
-  "maintainer_email": "steve@two-bulls.com",
-  "name": "pgbouncer",
-  "maintainer": "Two Bulls",
-  "conflicting": {
+  "version": "0.1.0",
+  "recommendations": {
   },
   "dependencies": {
+    "rightscale": ">= 0.0.0"
   },
+  "license": "All rights reserved",
+  "description": "Installs/Configures pgbouncer",
+  "providing": {
+  },
+  "recipes": {
+    "pgbouncer::default": "Installs and configures pgbouncer"
+  },
+  "conflicting": {
+  },
+  "maintainer_email": "steve@two-bulls.com",
+  "maintainer": "Two Bulls",
+  "name": "pgbouncer",
   "attributes": {
-    "pgbouncer/pool_mode": {
-      "type": "string",
-      "description": "When server connection is released back to pool.",
-      "recipes": [
+    "pgbouncer/listen_addr": {
+      "required": "optional",
+      "display_name": "PgBouncer listen address",
+      "choice": [
 
       ],
+      "type": "string",
+      "description": "IP address or * which means all ip-s.",
+      "default": "127.0.0.1",
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "pgbouncer/max_client_conn": {
+      "required": "optional",
+      "display_name": "PgBouncer max client connections",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Total number of clients that can connect.",
+      "default": "100",
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "pgbouncer/pool_mode": {
+      "required": "optional",
+      "display_name": "PgBouncer pool mode",
       "choice": [
         "session",
         "transaction",
         "statement"
       ],
-      "display_name": "PgBouncer pool mode",
-      "calculated": false,
-      "required": "optional",
-      "default": "session"
-    },
-    "pgbouncer/max_client_conn": {
       "type": "string",
-      "description": "Total number of clients that can connect.",
+      "description": "When server connection is released back to pool.",
+      "default": "session",
+      "calculated": false,
       "recipes": [
 
-      ],
+      ]
+    },
+    "pgbouncer/listen_port": {
+      "required": "optional",
+      "display_name": "PgBouncer listen port",
       "choice": [
 
       ],
-      "display_name": "PgBouncer max client connections",
-      "calculated": false,
-      "required": "optional",
-      "default": "100"
-    },
-    "pgbouncer/auth_type": {
       "type": "string",
-      "description": "Specify the authentication type to use.",
+      "description": "Accept connections on the specified port.",
+      "default": "6432",
+      "calculated": false,
       "recipes": [
 
+      ]
+    },
+    "pgbouncer/default_pool_size": {
+      "required": "optional",
+      "display_name": "PgBouncer default pool size",
+      "choice": [
+
       ],
+      "type": "string",
+      "description": "PgBouncer default pool size.",
+      "default": "20",
+      "calculated": false,
+      "recipes": [
+
+      ]
+    },
+    "pgbouncer/auth_type": {
+      "required": "optional",
+      "display_name": "PgBouncer authentication type",
       "choice": [
         "any",
         "trust",
@@ -68,55 +111,13 @@
         "crypt",
         "md5"
       ],
-      "display_name": "PgBouncer authentication type",
-      "calculated": false,
-      "required": "optional",
-      "default": "trust"
-    },
-    "pgbouncer/listen_port": {
       "type": "string",
-      "description": "Accept connections on the specified port.",
+      "description": "Specify the authentication type to use.",
+      "default": "trust",
+      "calculated": false,
       "recipes": [
 
-      ],
-      "choice": [
-
-      ],
-      "display_name": "PgBouncer listen port",
-      "calculated": false,
-      "required": "optional",
-      "default": "6432"
-    },
-    "pgbouncer/default_pool_size": {
-      "type": "string",
-      "description": "PgBouncer default pool size.",
-      "recipes": [
-
-      ],
-      "choice": [
-
-      ],
-      "display_name": "PgBouncer default pool size",
-      "calculated": false,
-      "required": "optional",
-      "default": "20"
-    },
-    "pgbouncer/listen_addr": {
-      "type": "string",
-      "description": "IP address or * which means all ip-s.",
-      "recipes": [
-
-      ],
-      "choice": [
-
-      ],
-      "display_name": "PgBouncer listen address",
-      "calculated": false,
-      "required": "optional",
-      "default": "127.0.0.1"
+      ]
     }
-  },
-  "providing": {
-  },
-  "long_description": "pgbouncer Cookbook\n==================\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - pgbouncer needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### pgbouncer::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['pgbouncer']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### pgbouncer::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `pgbouncer` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[pgbouncer]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n"
+  }
 }

@@ -6,9 +6,13 @@ description      'Installs/Configures pgbouncer'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
+# supports "ubuntu", "~> 10.04", "~> 12.04"
+
 %w{ ubuntu debian }.each do |os|
   supports os
 end
+
+depends "rightscale"
 
 recipe "pgbouncer::default", 
   "Installs and configures pgbouncer"
