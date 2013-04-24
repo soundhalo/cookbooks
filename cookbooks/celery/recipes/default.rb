@@ -41,6 +41,13 @@ directory "#{node[:celery][:run_dir]}" do
   action :create
 end
 
+directory "#{node[:celery][:beat_dir]}" do
+  owner "#{node[:celery][:user]}"
+  owner "#{node[:celery][:group]}"
+  mode 0755
+  action :create
+end
+
 template "/etc/default/celeryd" do
     source "etc/default/celeryd.erb"
     owner "root"

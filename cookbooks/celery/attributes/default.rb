@@ -25,3 +25,4 @@ default[:celery][:group] = "celery"
 default[:celery][:pool] = "processes"
 default[:celery][:run_dir] = "/var/run/celery"
 default[:celery][:time_limit] = 300
+set[:celery][:beat_dir] = "/var/lib/celery"
