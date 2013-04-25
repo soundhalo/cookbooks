@@ -21,4 +21,4 @@ attribute "newrelic/server_monitoring/license",
   :description =>
     "newrelic license key",
   :required => "required",
-  :recipes => ["app_django::setup_server_1_4"]
+  :recipes => ["newrelic::install"]
