@@ -9,18 +9,18 @@
 #BASIC CONFIG
 #############
 #LICENSE(S)
-default['newrelic']['server_monitoring']['license'] = "CHANGE_ME"
+default['newrelic']['server_monitoring']['license'] = "05184bd48ac541526470ef7b1e1723024b37c4cd"
 
 ################
 #ADVANCED CONFIG
 ################
 #server monitoring
-default['newrelic']['server_monitoring']['logfile'] = nil
-default['newrelic']['server_monitoring']['loglevel'] = nil
-default['newrelic']['server_monitoring']['proxy'] = nil
-default['newrelic']['server_monitoring']['ssl'] = nil
-default['newrelic']['server_monitoring']['ssl_ca_bundle'] = nil
-default['newrelic']['server_monitoring']['ssl_ca_path'] = nil
-default['newrelic']['server_monitoring']['pidfile'] = nil
-default['newrelic']['server_monitoring']['collector_host'] = nil
-default['newrelic']['server_monitoring']['timeout'] = nil
+set['newrelic']['server_monitoring']['logfile'] = nil
+set['newrelic']['server_monitoring']['loglevel'] = nil
+set['newrelic']['server_monitoring']['proxy'] = nil
+set['newrelic']['server_monitoring']['ssl'] = nil
+set['newrelic']['server_monitoring']['ssl_ca_bundle'] = nil
+set['newrelic']['server_monitoring']['ssl_ca_path'] = nil
+set['newrelic']['server_monitoring']['pidfile'] = nil
+set['newrelic']['server_monitoring']['collector_host'] = nil
+set['newrelic']['server_monitoring']['timeout'] = nil
