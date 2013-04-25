@@ -21,4 +21,4 @@ attribute "newrelic/server_monitoring/license",
   :description =>
     "newrelic license key",
   :required => "required",
-  :recipes => ["newrelic::install"]
+  :recipes => ["newrelic::default"]

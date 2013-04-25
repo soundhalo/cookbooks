@@ -1,53 +1,53 @@
 {
   "groupings": {
   },
+  "recommendations": {
+  },
+  "maintainer_email": "steve@two-bulls.com",
+  "long_description": "newrelic Cookbook\n=================\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - newrelic needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### newrelic::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['newrelic']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### newrelic::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `newrelic` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[newrelic]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n",
+  "name": "newrelic",
+  "platforms": {
+    "amazon": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "scientific": ">= 0.0.0",
+    "fedora": ">= 0.0.0"
+  },
+  "replacing": {
+  },
+  "providing": {
+  },
+  "suggestions": {
+  },
+  "version": "0.1.0",
+  "attributes": {
+    "newrelic/server_monitoring/license": {
+      "required": "required",
+      "calculated": false,
+      "display_name": "newrelic license key",
+      "type": "string",
+      "choice": [
+
+      ],
+      "description": "newrelic license key",
+      "recipes": [
+        "newrelic::default"
+      ]
+    }
+  },
   "conflicting": {
   },
-  "dependencies": {
-    "rightscale": ">= 0.0.0"
-  },
+  "description": "Installs/Configures newrelic",
   "recipes": {
     "newrelic::install": "Adds the New Relic repository.",
     "newrelic::server-monitor": "Installs & configures the New Relic server monitor package.",
     "newrelic::default": "Adds the New Relic repository, installs & configures the New Relic server monitor package."
   },
-  "version": "0.1.0",
-  "attributes": {
-    "newrelic/server_monitoring/license": {
-      "choice": [
-
-      ],
-      "type": "string",
-      "recipes": [
-        "newrelic::install"
-      ],
-      "calculated": false,
-      "required": "required",
-      "display_name": "newrelic license key",
-      "description": "newrelic license key"
-    }
-  },
-  "providing": {
-  },
-  "recommendations": {
-  },
-  "platforms": {
-    "scientific": ">= 0.0.0",
-    "fedora": ">= 0.0.0",
-    "centos": ">= 0.0.0",
-    "ubuntu": ">= 0.0.0",
-    "debian": ">= 0.0.0",
-    "redhat": ">= 0.0.0",
-    "amazon": ">= 0.0.0"
-  },
-  "maintainer_email": "steve@two-bulls.com",
-  "maintainer": "Twobulls ",
-  "long_description": "newrelic Cookbook\n=================\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - newrelic needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### newrelic::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['newrelic']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### newrelic::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `newrelic` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[newrelic]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n",
-  "name": "newrelic",
-  "suggestions": {
-  },
   "license": "All rights reserved",
-  "replacing": {
+  "dependencies": {
+    "rightscale": ">= 0.0.0"
   },
-  "description": "Installs/Configures newrelic"
+  "maintainer": "Twobulls "
 }
