@@ -10,7 +10,7 @@
 #############
 #LICENSE(S)
 default['newrelic']['server_monitoring']['license'] = "05184bd48ac541526470ef7b1e1723024b37c4cd"
-
+set['newrelic']['repository_key'] = "548C16BF"
 ################
 #ADVANCED CONFIG
 ################
