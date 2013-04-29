@@ -43,6 +43,7 @@ done
 
 #ssl
 cat /etc/haproxy/haproxy.ssl >> ${CONF_FILE}
+echo "" >> ${CONF_FILE}
 if [ $(ls -1A /etc/haproxy/ssl | wc -l) -gt 0 ]; then
   cat /etc/haproxy/ssl/* >> ${CONF_FILE}
 fi
