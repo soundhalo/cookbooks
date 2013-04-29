@@ -1,0 +1,8 @@
+frontend https
+    mode tcp
+    bind *:443
+    default_backend https_backend
+
+backend https_backend
+    mode tcp
+    balance roundrobin

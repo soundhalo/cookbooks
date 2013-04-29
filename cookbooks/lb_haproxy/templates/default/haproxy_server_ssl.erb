@@ -1,0 +1,1 @@
+server <%= @backend_name %> <%= @backend_ip %>:443 <% if @health_check_uri %> check port <%= @backend_port %> <% end %> inter 3000 rise 2 fall 3 maxconn <%= @max_conn_per_server %>
