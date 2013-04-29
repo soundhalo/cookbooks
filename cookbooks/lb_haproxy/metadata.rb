@@ -53,7 +53,7 @@ attribute "lb_haproxy/timeout_client",
 attribute "lb_haproxy/ssl",
   :display_name => "Supports ssl tcp forwarding",
   :description =>
-    "Whether this loadbalancer supports tcp ssl forwarding to default lb."
+    "Whether this loadbalancer supports tcp ssl forwarding to default lb.",
   :required => "optional",
   :default => "true",
   :choice => ["true","false"],
