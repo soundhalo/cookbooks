@@ -51,3 +51,5 @@ default[:app_django][:app][:cache][:url] = "127.0.0.1"
 default[:app_django][:app][:cache][:port] = "11211"
 default[:app_django][:app][:cache][:max_entries] = 1000
 
+default[:app_django][:db][:autocommit] = 'True'
+

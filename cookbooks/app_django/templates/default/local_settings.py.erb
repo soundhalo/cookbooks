@@ -12,6 +12,9 @@ DATABASES = {
     'PASSWORD': '<%= @password %>',
     'HOST': '<%= node[:pgbouncer][:listen_addr] %>',
     'PORT': '<%= node[:pgbouncer][:listen_port] %>',
+    'OPTIONS': {
+        'autocommit': <%= node[:app_django][:db][:autocommit] %>,
+    },
   }
 }
 
