@@ -419,7 +419,7 @@ relcache_expire = 0
 # BACKENDS
 
 # all writes goto hostname0
-backend_hostname0 = <%= node[:pgpool2][:write_backend][:url] %>
+backend_hostname0 = '<%= node[:pgpool2][:write_backend][:url] %>'
 backend_port0 = <%= node[:pgpool2][:write_backend][:port] %>
 backend_weight0 = <%= node[:pgpool2][:write_backend][:weight] %>
 
