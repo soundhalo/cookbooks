@@ -28,15 +28,15 @@ end
 servers_to_attach.each do |uuid|
   log "  adding slave #{uuid} with ip #{slave_servers[uuid][:ip]} to pgpool"
   # call attach definition
-  add_slave_to_pgpool "do attach" do
-    guid "ldfkjsldfjdslkfj"
-    ip slave_servers[uuid][:ip]
-    restart false
-  end
+#  add_slave_to_pgpool "do attach" do
+#    guid "ldfkjsldfjdslkfj"
+#    ip slave_servers[uuid][:ip]
+#    restart false
+#  end
 end
 
-service "pgpool2" do
-  action :restart
-end
+#service "pgpool2" do
+#  action :restart
+#end
 
 rightscale_marker :end
