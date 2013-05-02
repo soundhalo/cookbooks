@@ -39,6 +39,12 @@ recipe "db_postgres::do_set_slave_async_mode",
 recipe "db_postgres::do_show_slave_sync_mode",
   "Shows the sync mode used for replication."
 
+recipe "db_postgres::do_slave_attach_pgpool",
+  "Attaches the slave to all app servers running pgpool."
+    
+recipe "db_postgres::do_slave_detach_pgpool",
+  "Detaches the slave from all app servers running pgpool."
+  
 attribute "db_postgres",
   :display_name => "General Database Options",
   :type => "hash"
