@@ -10,8 +10,8 @@ DATABASES = {
     'NAME': '<%= @database %>',
     'USER': '<%= @user %>',
     'PASSWORD': '<%= @password %>',
-    'HOST': '<%= node[:pgbouncer][:listen_addr] %>',
-    'PORT': '<%= node[:pgbouncer][:listen_port] %>',
+    'HOST': '<%= node[:pgpool2][:listen_url]%>',
+    'PORT': '<%= node[:pgpool2][:listen_port] %>',
     'OPTIONS': {
         'autocommit': <%= node[:app_django][:db][:autocommit] %>,
     },
