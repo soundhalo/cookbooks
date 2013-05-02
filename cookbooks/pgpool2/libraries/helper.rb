@@ -9,7 +9,7 @@ module Twobulls
       #
       # @return [Set] attached_servers set of attached servers which will be in the same pool i.e., servers in lb config dir
       #
-      def get_attached_servers(pool_name)
+      def get_attached_servers()
         attached_servers = Set.new
         servers_d = "/etc/pgpool2/servers.d/"
         Dir.entries(servers_d).select do |file|

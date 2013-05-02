@@ -4,10 +4,10 @@ class Chef::Recipe
   include Twobulls::PGPool::Helper
 end
 
-log "Attach all for [#{pool_name}]"
+log "Attach all slaves"
 # Obtains current list from lb config file.
 # See cookbooks/lb/libraries/helper.rb for the "get_attached_servers" method.
-inconfig_servers = get_attached_servers(pool_name)
+inconfig_servers = get_attached_servers()
 log "  Currently attached: #{inconfig_servers.nil? ? 0 : inconfig_servers.count}"
 
 # Obtains list of app servers in deployment.
