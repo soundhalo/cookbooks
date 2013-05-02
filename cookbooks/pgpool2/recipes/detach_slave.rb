@@ -22,7 +22,7 @@ execute "#{gen_script}" do
 end
 
 # Deletes the individual server file and notifies the concatenation script if necessary.
-file ::File.join("#{servers_dir}", node[:db_slave][:server_guid]) do
+file ::File.join("#{servers_dir}", node[:remote_recipe][:slave_guid]) do
   action :delete
   backup false
   notifies :run, resources(:execute => "#{gen_script}")

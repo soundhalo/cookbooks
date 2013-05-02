@@ -9,9 +9,9 @@ end
 if not node[:db][:this_is_master]
   remote_recipe "attach slave" do
     recipe "pgpool2::attach_slave"
-    attributes :dbslave => {
+    attributes :remote_recipe => {
       :slave_ip => get_local_replication_interface,
-      :slave_uuid => node[:rightscale][:instance_uuid]
+      :slave_guid => node[:rightscale][:instance_uuid]
     }
     recipients_tags "pgpool2_server:active=true"
   end

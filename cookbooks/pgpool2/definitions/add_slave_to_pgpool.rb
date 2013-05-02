@@ -4,7 +4,7 @@
 
 define :add_slave_to_pgpool, :guid => "", :ip => "", :port => "5432", :restart => true do
 
-  log "  Attaching slave #{server_guid} / #{server_ip} / #{server_port}"
+  log "  Attaching slave #{guid} / #{ip} / #{port}"
   
   pg_dir = "/etc/pgpool2"
   server_dir = "#{pg_dir}/servers.d/"
