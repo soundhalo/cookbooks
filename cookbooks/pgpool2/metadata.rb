@@ -39,7 +39,16 @@ attribute "pgpool2/max_pool",
   :recipes => [
     "pgpool2::default",
   ]
-  
+
+attribute "pgpool2/listen_url",
+  :display_name => "pgpool2 listen url",
+  :description =>
+    "pgpools listen url",
+  :default => "127.0.0.1",
+  :recipes => [
+    "pgpool2::default",
+  ]
+    
 attribute "pgpool2/listen_port",
   :display_name => "pgpools listen port",
   :description =>
