@@ -1,0 +1,135 @@
+{
+  "providing": {
+  },
+  "maintainer": "Twobulls",
+  "description": "Installs/Configures pgpool2",
+  "groupings": {
+  },
+  "replacing": {
+  },
+  "recipes": {
+    "pgpool2::detach_slave": "Called remotely from slave db. DO NOT USE",
+    "pgpool2::attach_all": "Attaches all slave db's to pgpool",
+    "pgpool2::attach_slave": "Called remotely from slave db. DO NOT USE",
+    "pgpool2::default": "Installs and configures pgpool2 on machine"
+  },
+  "platforms": {
+  },
+  "license": "All rights reserved",
+  "maintainer_email": "steve@two-bulls.com",
+  "name": "pgpool2",
+  "version": "0.1.0",
+  "attributes": {
+    "pgpool2/num_init_children": {
+      "description": "The nummber of connections in a pool",
+      "required": "optional",
+      "type": "string",
+      "display_name": "number of children",
+      "recipes": [
+        "pgpool2::default"
+      ],
+      "default": "20",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "pgpool2/write_backend/weight": {
+      "description": "This should be left as default",
+      "required": "optional",
+      "type": "string",
+      "display_name": "the weight of the write backend",
+      "recipes": [
+        "pgpool2::default"
+      ],
+      "default": "1",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "pgpool2/write_backend/url": {
+      "description": "This should be left as default",
+      "required": "optional",
+      "type": "string",
+      "display_name": "the url of the write backend",
+      "recipes": [
+        "pgpool2::default"
+      ],
+      "default": "db-master.soundhalo.com",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "pgpool2/listen_port": {
+      "description": "pgpools listen port",
+      "required": "optional",
+      "type": "string",
+      "display_name": "pgpools listen port",
+      "recipes": [
+        "pgpool2::default"
+      ],
+      "default": "5433",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "pgpool2/max_pool": {
+      "description": "The total number of pools",
+      "required": "optional",
+      "type": "string",
+      "display_name": "maximum pool size",
+      "recipes": [
+        "pgpool2::default"
+      ],
+      "default": "1",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "pgpool2/read_backend/weight": {
+      "description": "The weighting to use for each read slave",
+      "required": "optional",
+      "type": "string",
+      "display_name": "read slave weighting",
+      "recipes": [
+        "pgpool2::default",
+        "pgpool2::attach_slave",
+        "pgpool2::attach_all",
+        "pgpool2::detach_slave"
+      ],
+      "default": "2",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "pgpool2/write_backend/port": {
+      "description": "This should be left as default",
+      "required": "optional",
+      "type": "string",
+      "display_name": "the port of the write backend",
+      "recipes": [
+        "pgpool2::default"
+      ],
+      "default": "5432",
+      "calculated": false,
+      "choice": [
+
+      ]
+    }
+  },
+  "conflicting": {
+  },
+  "suggestions": {
+  },
+  "recommendations": {
+  },
+  "dependencies": {
+    "rightscale": ">= 0.0.0"
+  },
+  "long_description": "pgpool2 Cookbook\n================\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - pgpool2 needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### pgpool2::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['pgpool2']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### pgpool2::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `pgpool2` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[pgpool2]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n"
+}
