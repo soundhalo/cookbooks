@@ -34,7 +34,7 @@ define :attach_slave, :server_guid => nil, :server_ip => nil, :server_port => 54
     variables(
       :server_weight => node[:pgpool2][:read_backend][:weight],
       :server_ip => server_ip,
-      :server_port => server_port,
+      :server_port => server_port
     )
     notifies :run, resources(:execute => "/etc/pgpool2/generate-conf.sh")
   end
