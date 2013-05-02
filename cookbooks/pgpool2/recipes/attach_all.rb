@@ -25,18 +25,51 @@ log "  No slaves to attach" do
   only_if { servers_to_attach.empty? }
 end
 
-servers_to_attach.each do |uuid|
-  log "  adding slave #{uuid} with ip #{slave_servers[uuid][:ip]} to pgpool"
-  # call attach definition
-#  add_slave_to_pgpool "do attach" do
-#    guid "ldfkjsldfjdslkfj"
-#    ip slave_servers[uuid][:ip]
-#    restart false
-#  end
+port = "5432"
+pg_dir = "/etc/pgpool2"
+server_dir = "#{pg_dir}/servers.d/"
+
+# Creates the directory for vhost server files.
+directory "#{server_dir}" do
+  owner "root"
+  group "root"
+  mode "0755"
+  recursive true
+  action :create
 end
 
-#service "pgpool2" do
-#  action :restart
-#end
+# loop through and add to the file
+servers_to_attach.each do |uuid|
+  log "  adding slave #{uuid} with ip #{slave_servers[uuid][:ip]} to pgpool"
+  
+  template ::File.join("#{server_dir}",uuid) do
+    source "pgpool.server.erb"
+    owner "root"
+    group "root"
+    mode "0600"
+    backup false
+    cookbook "pgpool2"
+    variables(
+      :server_weight => node[:pgpool2][:read_backend][:weight],
+      :server_ip => slave_servers[uuid][:ip],
+      :server_port => port
+    )
+  end
+  
+end
+
+gen_script = "#{pg_dir}/generate-conf.sh"
+
+# (Re)generates the config file.
+execute "#{gen_script}" do
+  user "root"
+  group "root"
+  umask "0077"
+  action :run
+end
+
+service "pgpool2" do
+  action :restart
+end
 
 rightscale_marker :end
