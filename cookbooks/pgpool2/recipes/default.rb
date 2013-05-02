@@ -17,7 +17,7 @@ package "pgpool2" do
 end
 
 service "pgpool2" do
-  action :enable
+  action :nothing
   supports :status => true, :start => true, :stop => true, :restart => true, :reload => true
 end
 
@@ -57,7 +57,10 @@ execute "#{pg_dir}/generate-conf.sh" do
   user "root"
   group "root"
   umask "0077"
-  notifies :restart, resources(:service => "pgpool2")
+end
+
+service "pgpool2" do
+  action [:restart]
 end
 
 rightscale_marker :end
