@@ -5,13 +5,12 @@ class Chef::Recipe
 end
 
 log "Attach all slaves"
-# Obtains current list from lb config file.
-# See cookbooks/lb/libraries/helper.rb for the "get_attached_servers" method.
+
+# get the attached servers
 inconfig_servers = get_attached_servers()
 log "  Currently attached: #{inconfig_servers.nil? ? 0 : inconfig_servers.count}"
 
-# Obtains list of app servers in deployment.
-# See cookbooks/lb/libraries/helper.rb for the "query_appservers" method.
+# get all the dbslaves
 slave_servers = query_databaseslaves()
 
 # Sends warning if no application servers are found.
@@ -27,8 +26,9 @@ log "  No slaves to attach" do
 end
 
 servers_to_attach.each do |uuid|
+  log "  adding slave #{uuid} with ip #{slave_servers[uuid][:ip]} to pgpool"
   # call attach definition
-  attach_slave "attach" do
+  add_slave_to_pgpool "attach" do
     server_guid uuid
     server_ip slave_servers[uuid][:ip]
     restart_pgpool false
