@@ -20,9 +20,8 @@ module Twobulls
         attached_servers
       end
 
-      # @param [String] pool_name virtual hosts name.
       #
-      # @return [Hash] app_servers hash of app servers in deployment answering for pool_name
+      # @return [Hash] slave_servers hash of app servers in deployment answering for pool_name
       #
       def query_databaseslaves()
         slave_servers = Hash.new
@@ -39,11 +38,11 @@ module Twobulls
           # See cookbooks/rightscale/libraries/helper.rb for the "get_tag_value" method.
           uuid = RightScale::Utils::Helper.get_tag_value('server:uuid', tags)
           ip = RightScale::Utils::Helper.get_tag_value('server:private_ip_0', tags)
-          app_servers[uuid] = {}
-          app_servers[uuid][:ip] = ip
+          slave_servers[uuid] = {}
+          slave_servers[uuid][:ip] = ip
         end
 
-        app_servers
+        slave_servers
       end
 
     end
