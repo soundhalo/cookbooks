@@ -29,7 +29,7 @@ servers_to_attach.each do |uuid|
   log "  adding slave #{uuid} with ip #{slave_servers[uuid][:ip]} to pgpool"
   # call attach definition
   add_slave_to_pgpool "do attach" do
-    guid uuid
+    guid "ldfkjsldfjdslkfj"
     ip slave_servers[uuid][:ip]
     restart false
   end
