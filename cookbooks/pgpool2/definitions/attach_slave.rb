@@ -2,7 +2,7 @@
 # Cookbook Name:: pgpool2
 #
 
-define :attach_slave, :server_guid => nil, :server_ip => nil, :server_port => 5432, restart_pgpool => true do
+define :attach_slave, :server_guid => nil, :server_ip => nil, :server_port => 5432, :restart_pgpool => true do
 
   log "  Attaching slave #{server_guid} / #{server_ip} / #{server_port}"
 
