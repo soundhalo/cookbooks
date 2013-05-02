@@ -23,7 +23,7 @@ end
 
 pg_dir = "/etc/pgpool2"
 
-template "#{pg_dir}/pgpool.base.conf" do
+template "#{pg_dir}/pgpool.conf.base" do
   source "pgpool.conf.base.erb"
   owner "root"
   group "root"
@@ -39,7 +39,7 @@ directory "#{pg_dir}/servers.d" do
 end
 
 template "#{pg_dir}/pcp.conf" do
-  source "pgpool2.conf.erb"
+  source "pcp.conf.erb"
   owner "root"
   group "root"
   mode "644"
