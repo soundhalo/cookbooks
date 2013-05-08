@@ -1,0 +1,53 @@
+<VirtualHost *:<%= @params[:vhost_port] %>>
+        ServerName <%= @params[:server_name] %>
+        DocumentRoot <%= @params[:docroot] %>
+        
+        <DirectoryMatch  /\.git/|/\.svn/ >
+          Deny from all
+        </DirectoryMatch>
+        
+        <Directory <%= @params[:docroot] %>/desktop>
+                <% if @params[:use_auth] %>
+                AuthType Basic
+                AuthName "Auth required"
+                Require valid-user
+                AuthUserFile /home/webapps/htpasswd
+                <% end %>
+                Options FollowSymLinks
+                AllowOverride AuthConfig
+
+                DirectoryIndex index.html
+                Options Indexes FollowSymLinks MultiViews
+                #AllowOverride None
+                Order allow,deny
+                allow from all
+
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteCond %{REQUEST_FILENAME} !-d
+                RewriteCond %{REQUEST_URI} !index
+                RewriteRule (.*) /index.html [L,QSA]
+
+        </Directory>
+
+        SSLProxyEngine on
+        ProxyPassMatch /api/(.*) http://<%= @params[:prod_url] %>/api/$1
+        ProxyPassMatch /api-ssl/(.*) https://<%= @params[:prod_url] %>/api/$1
+
+        Alias /media <%= @params[:docroot] %>/media
+        <Directory <%= @params[:docroot] %>/media>
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+        <Location "/media">
+                Satisfy Any
+        </Location>
+
+        Alias /core <%= @params[:docroot] %>/core
+        <Directory <%= @params[:docroot] %>/core>
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+</VirtualHost>
