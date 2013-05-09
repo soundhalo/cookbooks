@@ -10,7 +10,7 @@ end
 
 directory "#{node[:soundhalo_sites][:web_root]}" do
   action :create
-  recursive :true
+  recursive true
 end
 
 bash "install nodejs" do
