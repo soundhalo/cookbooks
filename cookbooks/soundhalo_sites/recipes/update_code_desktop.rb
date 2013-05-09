@@ -1,8 +1,6 @@
 rightscale_marker :begin
 
 # setup app and run recipe
-update_code "code" do
-  app_name "desktop"
-end
+update_code "desktop"
 
 rightscale_marker :end

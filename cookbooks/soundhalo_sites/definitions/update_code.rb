@@ -1,4 +1,6 @@
-define :update_code, :app_name => nil do
+define :update_code do
+  
+  app_name = params[:name]
   
   log "  Starting code update sequence for #{app_name}"
   log "  Current project git root is set to #{node[:soundhalo_sites][:app][app_name][:git_dir]}"
