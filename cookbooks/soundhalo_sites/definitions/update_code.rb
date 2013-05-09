@@ -12,7 +12,7 @@ define :update_code do
     app_user "www-data"
     repository node[:soundhalo_sites][:app][app_name][:git_repo]
     revision node[:soundhalo_sites][:app][app_name][:git_branch]
-    persist false
+    persist true
   end
 
   log "  Running build script"
