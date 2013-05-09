@@ -33,6 +33,11 @@
         SSLProxyEngine on
         ProxyPassMatch /api/(.*) http://<%= @params[:prod_url] %>/api/$1
         ProxyPassMatch /api-ssl/(.*) https://<%= @params[:prod_url] %>/api/$1
+        
+        <Proxy *>
+        Order Deny,Allow
+        Allow from all
+        </Proxy>
 
         Alias /media <%= @params[:webroot] %>/media
         <Directory <%= @params[:webroot] %>/media>
