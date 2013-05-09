@@ -13,7 +13,6 @@ define :update_code do
     repository node[:soundhalo_sites][:app][app_name][:git_repo]
     revision node[:soundhalo_sites][:app][app_name][:git_branch]
     persist false
-    cookbook "repo"
   end
 
   log "  Running build script"
