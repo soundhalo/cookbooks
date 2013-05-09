@@ -15,4 +15,7 @@ package "nodejs" do
   action :install
 end
 
+# symlink to node
+execute "ln -s /usr/bin/nodejs /usr/bin/node"
+
 rightscale_marker :end
