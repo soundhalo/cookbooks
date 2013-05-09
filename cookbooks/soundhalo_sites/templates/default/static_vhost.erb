@@ -6,7 +6,7 @@
           Deny from all
         </DirectoryMatch>
         
-        <Directory <%= @params[:docroot] %>/desktop>
+        <Directory <%= @params[:docroot] %>>
                 <% if @params[:use_auth] %>
                 AuthType Basic
                 AuthName "Auth required"
@@ -34,8 +34,8 @@
         ProxyPassMatch /api/(.*) http://<%= @params[:prod_url] %>/api/$1
         ProxyPassMatch /api-ssl/(.*) https://<%= @params[:prod_url] %>/api/$1
 
-        Alias /media <%= @params[:docroot] %>/media
-        <Directory <%= @params[:docroot] %>/media>
+        Alias /media <%= @params[:webroot] %>/media
+        <Directory <%= @params[:webroot] %>/media>
                 Order allow,deny
                 Allow from all
         </Directory>
@@ -44,8 +44,8 @@
                 Satisfy Any
         </Location>
 
-        Alias /core <%= @params[:docroot] %>/core
-        <Directory <%= @params[:docroot] %>/core>
+        Alias /core <%= @params[:webroot] %>/core
+        <Directory <%= @params[:webroot] %>/core>
                 Order allow,deny
                 Allow from all
         </Directory>

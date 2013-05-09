@@ -27,7 +27,8 @@ node[:soundhalo_sites][:app].each do |app_name, entry|
   # Configure apache vhost for mobile web
   web_app app_name do
     template "static_vhost.erb"
-    docroot entry[:web_dir]
+    docroot "#{entry[:web_dir]}/#{app_name}"
+    webroot entry[:web_dir]
     vhost_port the_port.to_s
     server_name entry[:web_url]
     use_auth node[:soundhalo_sites][:use_auth]
