@@ -11,6 +11,7 @@ define :update_code do
     action :pull
     app_user "www-data"
     repository node[:soundhalo_sites][:app][app_name][:git_repo]
+    revision node[:soundhalo_sites][:app][app_name][:git_branch]
     persist false
   end
 

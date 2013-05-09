@@ -20,10 +20,6 @@ app_add_listen_port the_port
 # Loop through all apps and create vhosts
 node[:soundhalo_sites][:app].each do |app_name, entry|
   
-  directory "#{entry[:web_dir]}" do
-    recursive true
-  end
-
   # Configure apache vhost for mobile web
   web_app app_name do
     template "static_vhost.erb"
