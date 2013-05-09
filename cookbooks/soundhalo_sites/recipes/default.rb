@@ -19,4 +19,10 @@ directory "#{node[:soundhalo_sites][:web_root]}" do
   recursive true
 end
 
+# create the htpasswd file
+template ::File.join(node[:soundhalo_sites][:web_root],"htpasswd") do
+  source "htpasswd.erb"
+  mode "0644"
+end
+
 rightscale_marker :end
