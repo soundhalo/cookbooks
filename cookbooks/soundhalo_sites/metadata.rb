@@ -8,6 +8,7 @@ version          '0.1.0'
 
 depends "rightscale"
 depends "apache2"
+depends "repo"
 
 recipe "soundhalo_sites::default",
   "Initializes variables"
