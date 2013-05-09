@@ -17,7 +17,7 @@ bash "install nodejs" do
   flags "-ex"
   code <<-EOH
     cd #{node[:soundhalo_sites][:web_root]}
-    git clone git://github.com/ry/node.git .
+    git clone git://github.com/ry/node.git node
     cd node
     ./configure
     make
