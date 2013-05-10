@@ -59,7 +59,7 @@ attribute "soundhalo_sites/app/mobile/git_repo",
   :description => "",
   :required => "required",
   :recipes => [
-    "soundhalo_sites::update_code_mobileweb",
+    "soundhalo_sites::update_code_mobile",
     "soundhalo_sites::update_code_all",
     "soundhalo_sites::default",
   ]
@@ -69,7 +69,7 @@ attribute "soundhalo_sites/app/mobile/git_branch",
   :description => "",
   :required => "required",
   :recipes => [
-    "soundhalo_sites::update_code_mobileweb",
+    "soundhalo_sites::update_code_mobile",
     "soundhalo_sites::update_code_all",
     "soundhalo_sites::default",
   ]
@@ -80,7 +80,7 @@ attribute "soundhalo_sites/app/mobile/web_url",
   :required => "required",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
-    "soundhalo_sites::update_code_mobileweb",
+    "soundhalo_sites::update_code_mobile",
     "soundhalo_sites::update_code_all",
     "soundhalo_sites::default",
   ]  
