@@ -5,7 +5,7 @@
 ;; database name = connect string
 [databases]
 ; send everything to single url
-* = host=<%= node[:pgpool2][:listen_url] %> port=<%= node[:pgpool2][:listen_port] %>
+* = host=<%= node[:db][:dns][:master][:fqdn] %>
 
 ;; Configuation section
 [pgbouncer]
