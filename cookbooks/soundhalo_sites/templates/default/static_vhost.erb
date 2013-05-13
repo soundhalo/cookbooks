@@ -7,7 +7,7 @@
         </DirectoryMatch>
         
         <Directory <%= @params[:docroot] %>>
-                <% if @params[:use_auth] %>
+                <% if @params[:use_auth] == 'true' %>
                 AuthType Basic
                 AuthName "Auth required"
                 Require valid-user

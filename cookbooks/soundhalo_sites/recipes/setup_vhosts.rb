@@ -27,7 +27,7 @@ node[:soundhalo_sites][:app].each do |app_name, entry|
     webroot entry[:web_dir]
     vhost_port the_port.to_s
     server_name entry[:web_url]
-    use_auth node[:soundhalo_sites][:use_auth]
+    use_auth entry[:use_auth]
     prod_url node[:soundhalo_sites][:prod_url]
     cookbook "soundhalo_sites"
   end

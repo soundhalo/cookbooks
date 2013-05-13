@@ -36,15 +36,6 @@ attribute "soundhalo_sites/apache_port",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ]
-
-attribute "soundhalo_sites/use_auth",
-  :display_name => "Use http auth",
-  :description => "Whether to use httpauth on vhost",
-  :required => "optional",
-  :default => "true",
-  :recipes => [
-    "soundhalo_sites::setup_vhosts",
-  ]
   
 attribute "soundhalo_sites/prod_url",
   :display_name => "soundhalo production url",
@@ -83,7 +74,16 @@ attribute "soundhalo_sites/app/mobile/web_url",
     "soundhalo_sites::update_code_mobile",
     "soundhalo_sites::update_code_all",
     "soundhalo_sites::default",
-  ]  
+  ] 
+  
+attribute "soundhalo_sites/app/mobile/use_auth",
+  :display_name => "Use http auth",
+  :description => "Whether to use httpauth on vhost",
+  :required => "optional",
+  :default => "true",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ] 
   
 attribute "soundhalo_sites/app/desktop/git_repo",
   :display_name => "soundhalo desktop site git repo",
@@ -115,3 +115,13 @@ attribute "soundhalo_sites/app/desktop/web_url",
     "soundhalo_sites::update_code_all",
     "soundhalo_sites::default",
   ]
+  
+attribute "soundhalo_sites/app/mobile/use_auth",
+  :display_name => "Use http auth",
+  :description => "Whether to use httpauth on vhost",
+  :required => "optional",
+  :default => "true",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ]
+  
