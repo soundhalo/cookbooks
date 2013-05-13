@@ -80,7 +80,7 @@ attribute "soundhalo_sites/app/mobile/use_auth",
   :display_name => "Use http auth",
   :description => "Whether to use httpauth on vhost",
   :required => "optional",
-  :default => "true",
+  :default => "false",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ] 
@@ -116,7 +116,7 @@ attribute "soundhalo_sites/app/desktop/web_url",
     "soundhalo_sites::default",
   ]
   
-attribute "soundhalo_sites/app/mobile/use_auth",
+attribute "soundhalo_sites/app/desktop/use_auth",
   :display_name => "Use http auth",
   :description => "Whether to use httpauth on vhost",
   :required => "optional",
