@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+  ServerName partners.soundhalo.com
+  <Location "/">
+      AuthType Basic
+      AuthName "Auth required"
+      Require valid-user
+      AuthUserFile /home/ubuntu/conf/htpasswd
+  </Location>
+  DocumentRoot /home/ubuntu/sites/partners.soundhalo.com
+  <Directory /home/ubuntu/sites/partners.soundhalo.com>
+      Options Includes FollowSymLinks
+      AllowOverride All
+  </Directory>
+</VirtualHost>

@@ -16,6 +16,9 @@ recipe "soundhalo_sites::default",
 recipe "soundhalo_sites::install_nodeJS",
   "What is says on the tin"
 
+recipe "soundhalo_sites::install_php",
+  "Installs the required php libraries for the blog"
+
 recipe "soundhalo_sites::setup_vhosts",
   "Loops [:app] collection and creates a vhost entry for each one"
 

@@ -1,0 +1,20 @@
+<VirtualHost *:<%= @params[:vhost_port] %>>
+  ServerName <%= @params[:server_name] %>
+  DocumentRoot <%= @params[:docroot] %>
+
+  Alias /faq <%= @params[:webroot] %>/support
+
+  <Directory <%= @params[:docroot] %>>
+        Options Includes FollowSymLinks
+        AllowOverride All
+  </Directory>
+  
+</VirtualHost>
+
+<VirtualHost *:<%= @params[:vhost_port] %>>
+    ServerName www.soundhalo.com
+    ServerAlias blog.soundhalo.com
+    ServerAlias support.soundhalo.com
+    
+    Redirect permanent / http://soundhalo.com/
+</VirtualHost>

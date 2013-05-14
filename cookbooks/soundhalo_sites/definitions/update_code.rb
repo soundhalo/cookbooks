@@ -15,16 +15,18 @@ define :update_code do
     persist true
   end
 
-  log "  Running build script"
-
-  bash "run build script" do
-    flags "-ex"
-    code <<-EOH
-      cd #{node[:soundhalo_sites][:app][app_name][:git_dir]}
-      ./scripts/build.sh #{app_name} production #{node[:soundhalo_sites][:app][app_name][:web_dir]}
-    EOH
+  # run node build script if required
+  if node[:soundhalo_sites][:app][app_name][:use_node]
+    log "  Running build script"
+    bash "run build script" do
+      flags "-ex"
+      code <<-EOH
+        cd #{node[:soundhalo_sites][:app][app_name][:git_dir]}
+        ./scripts/build.sh #{app_name} production #{node[:soundhalo_sites][:app][app_name][:web_dir]}
+      EOH
+    end
   end
-
+  
   # Restarting apache
   service "apache2" do
     action :reload
