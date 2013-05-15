@@ -83,7 +83,6 @@ attribute "soundhalo_sites/app/mobile/use_auth",
   :display_name => "Use http auth",
   :description => "Whether to use httpauth on vhost",
   :required => "required",
-  :default => "false",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ] 
@@ -120,7 +119,6 @@ attribute "soundhalo_sites/app/desktop/use_auth",
   :display_name => "Use http auth",
   :description => "Whether to use httpauth on vhost",
   :required => "required",
-  :default => "true",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ]
@@ -157,7 +155,6 @@ attribute "soundhalo_sites/app/www/use_auth",
   :display_name => "Use http auth",
   :description => "Whether to use httpauth on vhost",
   :required => "required",
-  :default => "false",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ] 
@@ -194,7 +191,6 @@ attribute "soundhalo_sites/app/partners/use_auth",
   :display_name => "Use http auth",
   :description => "Whether to use httpauth on vhost",
   :required => "required",
-  :default => "false",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ]
