@@ -14,8 +14,8 @@
   </Location>
   <% end %>
   
-  DocumentRoot <%= @params[:docroot] %>
-  <Directory <%= @params[:docroot] %>>
+  DocumentRoot <%= @params[:webroot] %>
+  <Directory <%= @params[:webroot] %>>
       Options Includes FollowSymLinks
       AllowOverride All
   </Directory>
