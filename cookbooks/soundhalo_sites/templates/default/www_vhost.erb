@@ -1,5 +1,6 @@
 <VirtualHost *:<%= @params[:vhost_port] %>>
   ServerName <%= @params[:server_name] %>
+  ServerAlias www2.soundhalo.com
   DocumentRoot <%= @params[:webroot] %>
 
   CustomLog /var/log/apache2/access.log combined
