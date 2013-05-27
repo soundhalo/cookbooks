@@ -16,6 +16,9 @@ depends "lb"
 recipe "lb_haproxy::setup_server",
   "This loads the required 'lb' resource using the HAProxy provider."
 
+recipe "lb_haproxy::enable_rsyslog",
+  "Enables rsyslog to listen for haproxy and sets up appropriate logrotations."
+
 attribute "lb_haproxy/algorithm",
   :display_name => "Load Balancing Algorithm",
   :description =>

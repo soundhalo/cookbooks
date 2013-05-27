@@ -12,7 +12,7 @@
 
 global
         <%= @stats_file_line %>
-        log /dev/log syslog info
+        log 127.0.0.1 local1 info
         maxconn 4096
         ulimit-n 8250
         chroot /etc/haproxy
