@@ -24,8 +24,8 @@
   </Directory>
 
   # Setup the logs in the appropriate directory
-  CustomLog <%= node[:apache][:log_dir] %>/access_log combined
-  ErrorLog  <%= node[:apache][:log_dir] %>/error_log
+  CustomLog <%= node[:apache][:log_dir] %>/access.log combined
+  ErrorLog  <%= node[:apache][:log_dir] %>/error.log
   LogLevel warn
 
   RewriteEngine On
