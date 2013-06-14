@@ -8,6 +8,7 @@ default[:soundhalo_sites][:app][:mobile][:git_repo] = ""
 default[:soundhalo_sites][:app][:mobile][:git_branch] = ""
 default[:soundhalo_sites][:app][:mobile][:web_url] = ""
 default[:soundhalo_sites][:app][:mobile][:use_auth] = 'true'
+default[:soundhalo_sites][:app][:mobile][:redirect_android] = 'false'
 set[:soundhalo_sites][:app][:mobile][:template] = static_vhost
 set[:soundhalo_sites][:app][:mobile][:use_node] = true
 
@@ -15,6 +16,7 @@ default[:soundhalo_sites][:app][:desktop][:git_repo] = ""
 default[:soundhalo_sites][:app][:desktop][:git_branch] = ""
 default[:soundhalo_sites][:app][:desktop][:web_url] = ""
 default[:soundhalo_sites][:app][:desktop][:use_auth] = 'true'
+default[:soundhalo_sites][:app][:desktop][:redirect_android] = 'false'
 set[:soundhalo_sites][:app][:desktop][:template] = static_vhost
 set[:soundhalo_sites][:app][:desktop][:use_node] = true
 
@@ -22,6 +24,7 @@ default[:soundhalo_sites][:app][:www][:git_repo] = ""
 default[:soundhalo_sites][:app][:www][:git_branch] = ""
 default[:soundhalo_sites][:app][:www][:web_url] = ""
 default[:soundhalo_sites][:app][:www][:use_auth] = 'false'
+default[:soundhalo_sites][:app][:www][:redirect_android] = 'false'
 set[:soundhalo_sites][:app][:www][:template] = "www_vhost.erb"
 set[:soundhalo_sites][:app][:www][:use_node] = false
 
@@ -29,6 +32,7 @@ default[:soundhalo_sites][:app][:partners][:git_repo] = ""
 default[:soundhalo_sites][:app][:partners][:git_branch] = ""
 default[:soundhalo_sites][:app][:partners][:web_url] = ""
 default[:soundhalo_sites][:app][:partners][:use_auth] = 'true'
+default[:soundhalo_sites][:app][:partners][:redirect_android] = 'false'
 set[:soundhalo_sites][:app][:partners][:template] = "partners_vhost.erb"
 set[:soundhalo_sites][:app][:partners][:use_node] = false
 

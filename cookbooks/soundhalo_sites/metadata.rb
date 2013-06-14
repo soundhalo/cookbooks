@@ -86,6 +86,14 @@ attribute "soundhalo_sites/app/mobile/use_auth",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ] 
+
+attribute "soundhalo_sites/app/mobile/redirect_android",
+  :display_name => "Redirect android devices",
+  :description => "Whether to redirect android devices to play store",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ]
   
 attribute "soundhalo_sites/app/desktop/git_repo",
   :display_name => "soundhalo desktop site git repo",
