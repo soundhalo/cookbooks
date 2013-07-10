@@ -99,7 +99,7 @@ attribute "soundhalo_sites/app/mobile/build_target",
   :display_name => "Node build script target",
   :description => "Only applicable when use_node=true",
   :default => "production",
-  :required => "required",
+  :required => "optional",
   :recipes => [
     "soundhalo_sites::update_code_mobile",
   ]
@@ -144,7 +144,7 @@ attribute "soundhalo_sites/app/desktop/build_target",
   :display_name => "Node build script target",
   :description => "Only applicable when use_node=true",
   :default => "production",
-  :required => "required",
+  :required => "optional",
   :recipes => [
     "soundhalo_sites::update_code_desktop",
   ]
