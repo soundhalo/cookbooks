@@ -8,6 +8,8 @@ version          '0.1.0'
 
 supports "ubuntu"
 
+depends "rightscale"
+
 recipe "nginx::default", 
   "Installs and configures nginx"
 
