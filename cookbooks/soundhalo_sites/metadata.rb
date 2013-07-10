@@ -94,6 +94,15 @@ attribute "soundhalo_sites/app/mobile/redirect_android",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
   ]
+
+attribute "soundhalo_sites/app/mobile/build_target",
+  :display_name => "Node build script target",
+  :description => "Only applicable when use_node=true",
+  :default => "production",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_mobile",
+  ]
   
 attribute "soundhalo_sites/app/desktop/git_repo",
   :display_name => "soundhalo desktop site git repo",
@@ -129,6 +138,15 @@ attribute "soundhalo_sites/app/desktop/use_auth",
   :required => "required",
   :recipes => [
     "soundhalo_sites::setup_vhosts",
+  ]
+
+attribute "soundhalo_sites/app/desktop/build_target",
+  :display_name => "Node build script target",
+  :description => "Only applicable when use_node=true",
+  :default => "production",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_desktop",
   ]
   
 attribute "soundhalo_sites/app/www/git_repo",

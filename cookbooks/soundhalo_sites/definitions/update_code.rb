@@ -22,7 +22,7 @@ define :update_code do
       flags "-ex"
       code <<-EOH
         cd #{node[:soundhalo_sites][:app][app_name][:git_dir]}
-        ./scripts/build.sh #{app_name} production #{node[:soundhalo_sites][:app][app_name][:web_dir]}
+        ./scripts/build.sh #{app_name} #{node[:soundhalo_sites][:app][app_name][:build_target]} #{node[:soundhalo_sites][:app][app_name][:web_dir]}
       EOH
     end
   end
