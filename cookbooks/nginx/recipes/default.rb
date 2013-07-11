@@ -18,6 +18,15 @@ service "nginx" do
   supports :status => true, :start => true, :stop => true, :restart => true, :reload => true
 end
 
+# config
+template "/etc/nginx/nginx.conf" do
+  source "nginx.conf.erb"
+  owner "root"
+  group "root"
+  mode "644"
+end
+
+# default vhost
 template "/etc/nginx/sites-available/default" do
   source "default.conf.erb"
   owner "root"
