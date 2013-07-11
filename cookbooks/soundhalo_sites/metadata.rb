@@ -51,6 +51,31 @@ attribute "soundhalo_sites/prod_url",
     "soundhalo_sites::setup_vhosts",
   ]  
   
+  
+attribute "soundhalo_sites/ssl_certificate",
+  :display_name => "ssl certificate",
+  :required => "required",
+  :description => "the ssl certificate",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ]  
+
+attribute "soundhalo_sites/ssl_chain",
+  :display_name => "ssl chain",
+  :required => "required",
+  :description => "the ssl chain cert from trusted provider",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ]  
+
+attribute "soundhalo_sites/ssl_key",
+  :display_name => "ssl key",
+  :required => "required",
+  :description => "the ssl key",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ]  
+
 attribute "soundhalo_sites/app/mobile/git_repo",
   :display_name => "soundhalo mobile site git repo",
   :description => "",

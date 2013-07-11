@@ -1,6 +1,7 @@
 default[:soundhalo_sites][:apache_port] = 80
 default[:soundhalo_sites][:prod_url] = ""
 default[:soundhalo_sites][:web_root] = "/home/webapps"
+default[:soundhalo_sites][:ssl_path] = "/etc/apache2/certs"
 
 static_vhost = 'static_vhost.erb'
 

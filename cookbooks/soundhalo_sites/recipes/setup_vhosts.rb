@@ -16,6 +16,35 @@ the_port = node[:soundhalo_sites][:apache_port]
 # Adds php port to list of ports for webserver to listen on
 # See cookbooks/app/definitions/app_add_listen_port.rb for the "app_add_listen_port" definition.
 app_add_listen_port the_port
+app_add_listen_port 443
+
+# add ssl certificates
+cert_folder = node[:soundhalo_sites][:ssl_path]
+
+directory "#{cert_folder}" do
+  recursive true
+end
+
+template "#{cert_folder}/ssl_cert.crt" do
+  source "ssl_cert.crt.erb"
+  owner "root"
+  group "root"
+  mode "644"
+end
+
+template "#{cert_folder}/ssl_key.pem" do
+  source "ssl_key.pem.erb"
+  owner "root"
+  group "root"
+  mode "644"
+end
+
+template "#{cert_folder}/ssl_chain.crt" do
+  source "ssl_chain.crt.erb"
+  owner "root"
+  group "root"
+  mode "644"
+end
 
 # Loop through all apps and create vhosts
 node[:soundhalo_sites][:app].each do |app_name, entry|
