@@ -25,6 +25,9 @@ recipe "soundhalo_sites::setup_vhosts",
 recipe "soundhalo_sites::update_code_desktop",
   "checkout or pull down code for desktop app. runs build script and restarts apache"
 
+recipe "soundhalo_sites::update_code_account",
+  "checkout or pull down code for account app. runs build script and restarts apache"
+
 recipe "soundhalo_sites::update_code_mobile",
   "checkout or pull down code for mobile app. runs build script and restarts apache"
 
@@ -172,6 +175,51 @@ attribute "soundhalo_sites/app/desktop/build_target",
   :required => "optional",
   :recipes => [
     "soundhalo_sites::update_code_desktop",
+  ]
+
+attribute "soundhalo_sites/app/account/git_repo",
+  :display_name => "soundhalo account site git repo",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_account",
+    "soundhalo_sites::default",
+  ]
+
+attribute "soundhalo_sites/app/account/git_branch",
+  :display_name => "soundhalo account site git repo branch",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_account",
+    "soundhalo_sites::default",
+  ]
+
+attribute "soundhalo_sites/app/account/web_url",
+  :display_name => "soundhalo account site url",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+    "soundhalo_sites::update_code_account",
+    "soundhalo_sites::default",
+  ]
+
+attribute "soundhalo_sites/app/account/use_auth",
+  :display_name => "Use http auth",
+  :description => "Whether to use httpauth on vhost",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ]
+
+attribute "soundhalo_sites/app/account/build_target",
+  :display_name => "Node build script target",
+  :description => "Only applicable when use_node=true",
+  :default => "production",
+  :required => "optional",
+  :recipes => [
+    "soundhalo_sites::update_code_account",
   ]
   
 attribute "soundhalo_sites/app/www/git_repo",

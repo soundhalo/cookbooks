@@ -23,6 +23,15 @@ default[:soundhalo_sites][:app][:desktop][:build_target] = 'production'
 set[:soundhalo_sites][:app][:desktop][:template] = static_vhost
 set[:soundhalo_sites][:app][:desktop][:use_node] = true
 
+default[:soundhalo_sites][:app][:account][:git_repo] = ""
+default[:soundhalo_sites][:app][:account][:git_branch] = ""
+default[:soundhalo_sites][:app][:account][:web_url] = ""
+default[:soundhalo_sites][:app][:account][:use_auth] = 'true'
+default[:soundhalo_sites][:app][:account][:redirect_android] = 'false'
+default[:soundhalo_sites][:app][:account][:build_target] = 'production'
+set[:soundhalo_sites][:app][:account][:template] = static_vhost
+set[:soundhalo_sites][:app][:account][:use_node] = true
+
 default[:soundhalo_sites][:app][:www][:git_repo] = ""
 default[:soundhalo_sites][:app][:www][:git_branch] = ""
 default[:soundhalo_sites][:app][:www][:web_url] = ""
