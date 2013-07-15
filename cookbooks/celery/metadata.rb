@@ -21,6 +21,8 @@ recipe           "celery::do_start",
   "Starts the celery daemon"
 recipe           "celery::do_stop",
   "Stops the celery daemon"
+recipe           "celery::setup_logrotate",
+  "Adds logrotation to celery log files"
 
 attribute "celery/log_dir",
   :display_name => "Log directory",
