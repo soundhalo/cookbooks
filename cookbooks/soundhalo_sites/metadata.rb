@@ -115,9 +115,9 @@ attribute "soundhalo_sites/app/mobile/use_auth",
     "soundhalo_sites::setup_vhosts",
   ] 
 
-attribute "soundhalo_sites/app/mobile/redirect_android",
-  :display_name => "Redirect android devices",
-  :description => "Whether to redirect android devices to play store",
+attribute "soundhalo_sites/app/mobile/redirect_non_ios",
+  :display_name => "Redirect non-iOS devices",
+  :description => "Whether to redirect all non-ios devices to soundhalo.com",
   :required => "required",
   :recipes => [
     "soundhalo_sites::setup_vhosts",

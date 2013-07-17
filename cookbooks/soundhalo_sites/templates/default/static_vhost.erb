@@ -44,9 +44,9 @@
                 RewriteCond %{REQUEST_URI} !index
                 RewriteRule (.*) /index.html [L,QSA]
 
-                <% if @params[:redirect_android] == 'true' %>
-                RewriteCond %{HTTP_USER_AGENT} "android" [NC]
-                RewriteRule ^(.*)$ http://play.google.com/store/apps/details?id=com.soundhalo.android [L,QSA]
+                <% if @params[:redirect_non_ios] == 'true' %>
+                  RewriteCond %{HTTP_USER_AGENT} !^.*iP(hone|od|ad).*$
+                  RewriteRule ^(.*)$ http://soundhalo.com [L,QSA]
                 <% end %>
         </Directory>
 
