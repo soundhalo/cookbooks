@@ -57,7 +57,7 @@ node[:soundhalo_sites][:app].each do |app_name, entry|
     vhost_port the_port.to_s
     server_name entry[:web_url]
     use_auth entry[:use_auth]
-    redirect_android entry[:redirect_android]
+    redirect_non_ios entry[:redirect_non_ios]
     prod_url node[:soundhalo_sites][:prod_url]
     cookbook "soundhalo_sites"
   end
