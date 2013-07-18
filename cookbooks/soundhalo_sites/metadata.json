@@ -1,442 +1,385 @@
 {
-  "replacing": {
-  },
-  "providing": {
-  },
-  "long_description": "soundhalo_sites Cookbook\n============================\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - soundhalo_sites needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### soundhalo_sites::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['soundhalo_sites']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### soundhalo_sites::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `soundhalo_sites` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[soundhalo_sites]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n",
-  "platforms": {
-  },
-  "recommendations": {
+  "groupings": {
   },
   "attributes": {
-    "soundhalo_sites/app/www/web_url": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo www site url",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts",
-        "soundhalo_sites::update_code_www",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/account/build_target": {
-      "choice": [
-
-      ],
-      "default": "production",
-      "calculated": false,
-      "display_name": "Node build script target",
-      "required": "optional",
-      "recipes": [
-        "soundhalo_sites::update_code_account"
-      ],
-      "description": "Only applicable when use_node=true",
-      "type": "string"
-    },
-    "soundhalo_sites/app/mobile/build_target": {
-      "choice": [
-
-      ],
-      "default": "production",
-      "calculated": false,
-      "display_name": "Node build script target",
-      "required": "optional",
-      "recipes": [
-        "soundhalo_sites::update_code_mobile"
-      ],
-      "description": "Only applicable when use_node=true",
-      "type": "string"
-    },
-    "soundhalo_sites/app/partners/web_url": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo partners site url",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts",
-        "soundhalo_sites::update_code_partners",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/www/use_auth": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "Use http auth",
-      "required": "required",
+    "soundhalo_sites/app/desktop/use_auth": {
       "recipes": [
         "soundhalo_sites::setup_vhosts"
       ],
       "description": "Whether to use httpauth on vhost",
-      "type": "string"
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "Use http auth",
+      "choice": [
+
+      ]
     },
     "soundhalo_sites/app/mobile/use_auth": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "Use http auth",
-      "required": "required",
       "recipes": [
         "soundhalo_sites::setup_vhosts"
       ],
       "description": "Whether to use httpauth on vhost",
-      "type": "string"
-    },
-    "soundhalo_sites/ssl_certificate": {
-      "choice": [
-
-      ],
+      "type": "string",
       "calculated": false,
-      "display_name": "ssl certificate",
       "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts"
-      ],
-      "description": "the ssl certificate",
-      "type": "string"
-    },
-    "soundhalo_sites/apache_port": {
+      "display_name": "Use http auth",
       "choice": [
 
-      ],
-      "default": "80",
-      "calculated": false,
-      "display_name": "Apache port to listen on",
-      "required": "optional",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts"
-      ],
-      "description": "",
-      "type": "string"
+      ]
     },
-    "soundhalo_sites/app/www/git_branch": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo www site git repo branch",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::update_code_www",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/account/web_url": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo account site url",
-      "required": "required",
+    "soundhalo_sites/app/partners/web_url": {
       "recipes": [
         "soundhalo_sites::setup_vhosts",
-        "soundhalo_sites::update_code_account",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/account/git_repo": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo account site git repo",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::update_code_account",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/desktop/build_target": {
-      "choice": [
-
-      ],
-      "default": "production",
-      "calculated": false,
-      "display_name": "Node build script target",
-      "required": "optional",
-      "recipes": [
-        "soundhalo_sites::update_code_desktop"
-      ],
-      "description": "Only applicable when use_node=true",
-      "type": "string"
-    },
-    "soundhalo_sites/app/mobile/redirect_non_ios": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "Redirect non-iOS devices",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts"
-      ],
-      "description": "Whether to redirect all non-ios devices to soundhalo.com",
-      "type": "string"
-    },
-    "soundhalo_sites/app/account/use_auth": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "Use http auth",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts"
-      ],
-      "description": "Whether to use httpauth on vhost",
-      "type": "string"
-    },
-    "soundhalo_sites/app/desktop/git_branch": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo mobile site git repo branch",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::update_code_desktop",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/mobile/git_repo": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo mobile site git repo",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::update_code_mobile",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/ssl_key": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "ssl key",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts"
-      ],
-      "description": "the ssl key",
-      "type": "string"
-    },
-    "soundhalo_sites/app/www/git_repo": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo www site git repo",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::update_code_www",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/account/git_branch": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo account site git repo branch",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::update_code_account",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/desktop/use_auth": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "Use http auth",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts"
-      ],
-      "description": "Whether to use httpauth on vhost",
-      "type": "string"
-    },
-    "soundhalo_sites/app/desktop/web_url": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo desktop site url",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts",
-        "soundhalo_sites::update_code_desktop",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/prod_url": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo production url",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::setup_vhosts"
-      ],
-      "description": "Used for proxying api requests",
-      "type": "string"
-    },
-    "soundhalo_sites/app/partners/git_branch": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "soundhalo partners site git repo branch",
-      "required": "required",
-      "recipes": [
         "soundhalo_sites::update_code_partners",
         "soundhalo_sites::default"
       ],
       "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/partners/git_repo": {
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo partners site url",
       "choice": [
 
-      ],
-      "calculated": false,
-      "display_name": "soundhalo partners site git repo",
-      "required": "required",
+      ]
+    },
+    "soundhalo_sites/app/www/web_url": {
       "recipes": [
-        "soundhalo_sites::update_code_partners",
+        "soundhalo_sites::setup_vhosts",
+        "soundhalo_sites::update_code_www",
         "soundhalo_sites::default"
       ],
       "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/mobile/git_branch": {
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo www site url",
       "choice": [
 
-      ],
-      "calculated": false,
-      "display_name": "soundhalo mobile site git repo branch",
-      "required": "required",
-      "recipes": [
-        "soundhalo_sites::update_code_mobile",
-        "soundhalo_sites::default"
-      ],
-      "description": "",
-      "type": "string"
+      ]
     },
     "soundhalo_sites/ssl_chain": {
-      "choice": [
-
-      ],
-      "calculated": false,
-      "display_name": "ssl chain",
-      "required": "required",
       "recipes": [
         "soundhalo_sites::setup_vhosts"
       ],
       "description": "the ssl chain cert from trusted provider",
-      "type": "string"
-    },
-    "soundhalo_sites/app/mobile/web_url": {
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "ssl chain",
       "choice": [
 
+      ]
+    },
+    "soundhalo_sites/apache_port": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts"
       ],
+      "description": "",
+      "default": "80",
+      "type": "string",
       "calculated": false,
-      "display_name": "soundhalo mobile site url",
+      "required": "optional",
+      "display_name": "Apache port to listen on",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/partners/git_branch": {
+      "recipes": [
+        "soundhalo_sites::update_code_partners",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
       "required": "required",
+      "display_name": "soundhalo partners site git repo branch",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/www/git_repo": {
+      "recipes": [
+        "soundhalo_sites::update_code_www",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo www site git repo",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/mobile/build_target": {
+      "recipes": [
+        "soundhalo_sites::update_code_mobile"
+      ],
+      "description": "Only applicable when use_node=true",
+      "default": "production",
+      "type": "string",
+      "calculated": false,
+      "required": "optional",
+      "display_name": "Node build script target",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/mobile/git_branch": {
+      "recipes": [
+        "soundhalo_sites::update_code_mobile",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo mobile site git repo branch",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/mobile/redirect_non_ios": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts"
+      ],
+      "description": "Whether to redirect all non-ios devices to soundhalo.com",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "Redirect non-iOS devices",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/prod_url": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts"
+      ],
+      "description": "Used for proxying api requests",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo production url",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/desktop/web_url": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts",
+        "soundhalo_sites::update_code_desktop",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo desktop site url",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/partners/use_auth": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts"
+      ],
+      "description": "Whether to use httpauth on vhost",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "Use http auth",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/desktop/build_target": {
+      "recipes": [
+        "soundhalo_sites::update_code_desktop"
+      ],
+      "description": "Only applicable when use_node=true",
+      "default": "production",
+      "type": "string",
+      "calculated": false,
+      "required": "optional",
+      "display_name": "Node build script target",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/mobile/web_url": {
       "recipes": [
         "soundhalo_sites::setup_vhosts",
         "soundhalo_sites::update_code_mobile",
         "soundhalo_sites::default"
       ],
       "description": "",
-      "type": "string"
-    },
-    "soundhalo_sites/app/partners/use_auth": {
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo mobile site url",
       "choice": [
 
-      ],
-      "calculated": false,
-      "display_name": "Use http auth",
-      "required": "required",
+      ]
+    },
+    "soundhalo_sites/app/mobile/git_repo": {
       "recipes": [
-        "soundhalo_sites::setup_vhosts"
+        "soundhalo_sites::update_code_mobile",
+        "soundhalo_sites::default"
       ],
-      "description": "Whether to use httpauth on vhost",
-      "type": "string"
-    },
-    "soundhalo_sites/app/desktop/git_repo": {
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo mobile site git repo",
       "choice": [
 
-      ],
-      "calculated": false,
-      "display_name": "soundhalo desktop site git repo",
-      "required": "required",
+      ]
+    },
+    "soundhalo_sites/app/desktop/git_branch": {
       "recipes": [
         "soundhalo_sites::update_code_desktop",
         "soundhalo_sites::default"
       ],
       "description": "",
-      "type": "string"
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo mobile site git repo branch",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/ssl_key": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts"
+      ],
+      "description": "the ssl key",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "ssl key",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/account/web_url": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo account site url",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/www/use_auth": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts"
+      ],
+      "description": "Whether to use httpauth on vhost",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "Use http auth",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/www/git_branch": {
+      "recipes": [
+        "soundhalo_sites::update_code_www",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo www site git repo branch",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/partners/git_repo": {
+      "recipes": [
+        "soundhalo_sites::update_code_partners",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo partners site git repo",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/app/desktop/git_repo": {
+      "recipes": [
+        "soundhalo_sites::update_code_desktop",
+        "soundhalo_sites::default"
+      ],
+      "description": "",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "soundhalo desktop site git repo",
+      "choice": [
+
+      ]
+    },
+    "soundhalo_sites/ssl_certificate": {
+      "recipes": [
+        "soundhalo_sites::setup_vhosts"
+      ],
+      "description": "the ssl certificate",
+      "type": "string",
+      "calculated": false,
+      "required": "required",
+      "display_name": "ssl certificate",
+      "choice": [
+
+      ]
     }
   },
   "maintainer": "Twobulls",
-  "name": "soundhalo_sites",
-  "groupings": {
-  },
-  "dependencies": {
-    "apache2": ">= 0.0.0",
-    "repo": ">= 0.0.0",
-    "rightscale": ">= 0.0.0"
-  },
-  "license": "All rights reserved",
-  "version": "0.1.0",
   "recipes": {
-    "soundhalo_sites::install_php": "Installs the required php libraries for the blog",
-    "soundhalo_sites::update_code_account": "checkout or pull down code for account app. runs build script and restarts apache",
-    "soundhalo_sites::default": "Initializes variables",
-    "soundhalo_sites::install_nodeJS": "What is says on the tin",
-    "soundhalo_sites::update_code_desktop": "checkout or pull down code for desktop app. runs build script and restarts apache",
-    "soundhalo_sites::update_code_www": "checkout or pull down code for www site.",
-    "soundhalo_sites::update_code_mobile": "checkout or pull down code for mobile app. runs build script and restarts apache",
     "soundhalo_sites::setup_vhosts": "Loops [:app] collection and creates a vhost entry for each one",
-    "soundhalo_sites::update_code_partners": "checkout or pull down code for partners site."
+    "soundhalo_sites::update_code_desktop": "checkout or pull down code for desktop app. runs build script and restarts apache",
+    "soundhalo_sites::update_code_partners": "checkout or pull down code for partners site.",
+    "soundhalo_sites::install_php": "Installs the required php libraries for the blog",
+    "soundhalo_sites::default": "Initializes variables",
+    "soundhalo_sites::update_code_mobile": "checkout or pull down code for mobile app. runs build script and restarts apache",
+    "soundhalo_sites::update_code_www": "checkout or pull down code for www site.",
+    "soundhalo_sites::install_nodeJS": "What is says on the tin"
+  },
+  "replacing": {
+  },
+  "description": "Installs/Configures app_soundhalo_sites",
+  "version": "0.1.0",
+  "providing": {
+  },
+  "maintainer_email": "steve@two-bulls.com",
+  "long_description": "soundhalo_sites Cookbook\n============================\nTODO: Enter the cookbook description here.\n\ne.g.\nThis cookbook makes your favorite breakfast sandwhich.\n\nRequirements\n------------\nTODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.\n\ne.g.\n#### packages\n- `toaster` - soundhalo_sites needs toaster to brown your bagel.\n\nAttributes\n----------\nTODO: List you cookbook attributes here.\n\ne.g.\n#### soundhalo_sites::default\n<table>\n  <tr>\n    <th>Key</th>\n    <th>Type</th>\n    <th>Description</th>\n    <th>Default</th>\n  </tr>\n  <tr>\n    <td><tt>['soundhalo_sites']['bacon']</tt></td>\n    <td>Boolean</td>\n    <td>whether to include bacon</td>\n    <td><tt>true</tt></td>\n  </tr>\n</table>\n\nUsage\n-----\n#### soundhalo_sites::default\nTODO: Write usage instructions for each cookbook.\n\ne.g.\nJust include `soundhalo_sites` in your node's `run_list`:\n\n```json\n{\n  \"name\":\"my_node\",\n  \"run_list\": [\n    \"recipe[soundhalo_sites]\"\n  ]\n}\n```\n\nContributing\n------------\nTODO: (optional) If this is a public cookbook, detail the process for contributing. If this is a private cookbook, remove this section.\n\ne.g.\n1. Fork the repository on Github\n2. Create a named feature branch (like `add_component_x`)\n3. Write you change\n4. Write tests for your change (if applicable)\n5. Run the tests, ensuring they all pass\n6. Submit a Pull Request using Github\n\nLicense and Authors\n-------------------\nAuthors: TODO: List authors\n",
+  "license": "All rights reserved",
+  "conflicting": {
+  },
+  "recommendations": {
+  },
+  "platforms": {
   },
   "suggestions": {
   },
-  "description": "Installs/Configures app_soundhalo_sites",
-  "conflicting": {
+  "dependencies": {
+    "apache2": ">= 0.0.0",
+    "rightscale": ">= 0.0.0",
+    "repo": ">= 0.0.0"
   },
-  "maintainer_email": "steve@two-bulls.com"
+  "name": "soundhalo_sites"
 }
