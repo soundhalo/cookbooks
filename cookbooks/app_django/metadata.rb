@@ -48,6 +48,12 @@ attribute "app_django/app/debug_mode",
   :default => "false",
   :recipes => ["app_django::setup_server_1_4"]
 
+attribute "app_django/app/cloudfront_id",
+  :display_name => "Cloudfront Distribution Id",
+  :description =>
+    "Used to created signed url's for cloudfront,",
+  :recipes => ["app_django::setup_server_1_4"]
+
 attribute "app_django/apache/serve_local_files",
   :display_name => "Apache serve local Files",
   :description =>

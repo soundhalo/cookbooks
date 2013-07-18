@@ -26,6 +26,8 @@ ENABLE_NEWRELIC = <%= node[:app_django][:app][:enable_newrelic] %>
 
 SSL_REDIRECTS_ENABLED = True
 
+CLOUDFRONT_DISTRIBUTION_ID = '<%= node[:app_django][:app][:cloudfront_id] %>'
+
 CACHE_TIMEOUT = <%= node[:app_django][:app][:cache][:timeout] %>
 
 CACHES = {

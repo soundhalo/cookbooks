@@ -24,6 +24,7 @@ default[:app_django][:project][:opt_pip_list] = ""
 default[:app_django][:app][:environment] = "production"
 default[:app_django][:app][:name] = ""
 default[:app_django][:app][:enable_traceview] = "False"
+default[:app_django][:app][:cloudfront_id] = "E20S8BVW8BAZCW"
 
 default[:app_django][:celery][:broker_type] = "amqp"
 default[:app_django][:celery][:broker_host] = ""
