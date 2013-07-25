@@ -1,13 +1,13 @@
 <VirtualHost *:80>
         # redirect all to desktop
         ServerName <%= @params[:server_name] %>
-        Redirect / https://<%= node[:soundhalo_sites][:app][:desktop][:web_url] %>/
+        Redirect / https://<%= node[:soundhalo_sites][:app][:desktop][:web_url] %>/me
 </VirtualHost>
 
 <VirtualHost *:443>
         # redirect all to desktop
         ServerName <%= @params[:server_name] %>
-        Redirect / https://<%= node[:soundhalo_sites][:app][:desktop][:web_url] %>/
+        Redirect / https://<%= node[:soundhalo_sites][:app][:desktop][:web_url] %>/me
 
         SSLEngine on
 
