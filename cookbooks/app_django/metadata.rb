@@ -54,6 +54,14 @@ attribute "app_django/app/cloudfront_id",
     "Used to created signed url's for cloudfront,",
   :recipes => ["app_django::setup_server_1_4"]
 
+attribute "app_django/app/email_subject",
+  :display_name => "The email subject line",
+  :description =>
+    "The subject line sent in all emails sent from server",
+  :required => "optional",
+  :default => "[Soundhalo PRODUCTION Server]",
+  :recipes => ["app_django::setup_server_1_4"]
+
 attribute "app_django/apache/serve_local_files",
   :display_name => "Apache serve local Files",
   :description =>

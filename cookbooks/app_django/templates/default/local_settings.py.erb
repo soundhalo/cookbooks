@@ -18,6 +18,8 @@ DATABASES = {
   }
 }
 
+EMAIL_SUBJECT_PREFIX = '<%= node[:app_django][:app][:email_subject] %> '
+
 # celery info
 BROKER_URL = '<%= @vars[:broker_url] %>'
 
