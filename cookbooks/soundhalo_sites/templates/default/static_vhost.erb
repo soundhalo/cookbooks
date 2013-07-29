@@ -51,7 +51,7 @@
                 <% elsif @application_name == 'mobile' %>
                   RewriteCond %{HTTP_USER_AGENT} !^.*iP(hone|od|ad).*$
                   RewriteRule ^(.*)$ http://soundhalo.com [L,QSA]
-                {% endif %}
+                <% endif %>
                 
         </Directory>
 
