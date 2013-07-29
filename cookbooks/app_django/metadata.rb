@@ -141,9 +141,9 @@ attribute "app_django/app/enable_newrelic",
   :display_name => "Enable newrelic debugging",
   :description =>
     "Newrelic is used to gather statistic about requests and errors.",
-  :choice => ["true", "false"],
+  :choice => ["True", "False"],
   :required => "optional",
-  :default => "true",
+  :default => "True",
   :recipes => ["app_django::setup_server_1_4"]
   
   
