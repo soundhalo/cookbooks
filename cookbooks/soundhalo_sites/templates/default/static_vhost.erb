@@ -44,10 +44,15 @@
                 RewriteCond %{REQUEST_URI} !index
                 RewriteRule (.*) /index.html [L,QSA]
 
-                <% if @params[:redirect_non_ios] == 'true' %>
+                <% if @application_name == 'desktop' %>
+                  RewriteCond %{HTTP_USER_AGENT} ^.*iP(hone|od|ad).*$ [OR]
+                  RewriteCond %{HTTP_USER_AGENT} ^.*Android.*$
+                  RewriteRule ^(.*)$ http://soundhalo.com [L,QSA]
+                <% elsif @application_name == 'mobile' %>
                   RewriteCond %{HTTP_USER_AGENT} !^.*iP(hone|od|ad).*$
                   RewriteRule ^(.*)$ http://soundhalo.com [L,QSA]
-                <% end %>
+                {% endif %}
+                
         </Directory>
 
         SSLProxyEngine on
