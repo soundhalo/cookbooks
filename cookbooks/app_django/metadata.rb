@@ -137,14 +137,13 @@ attribute "app_django/celery/broker_password",
   :recipes => ["app_django::setup_server_1_4"]
   
   
-attribute "app_django/app/enable_traceview",
-  :display_name => "Enable traceview debugging",
+attribute "app_django/app/enable_newrelic",
+  :display_name => "Enable newrelic debugging",
   :description =>
-    "Traceview is used to debug requests and can be enabled for testing." +
-    " Note: should not be used when in production",
+    "Newrelic is used to gather statistic about requests and errors.",
   :choice => ["true", "false"],
   :required => "optional",
-  :default => "false",
+  :default => "true",
   :recipes => ["app_django::setup_server_1_4"]
   
   

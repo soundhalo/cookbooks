@@ -23,7 +23,6 @@ default[:app_django][:project][:opt_pip_list] = ""
 
 default[:app_django][:app][:environment] = "production"
 default[:app_django][:app][:name] = ""
-default[:app_django][:app][:enable_traceview] = "False"
 default[:app_django][:app][:cloudfront_id] = "E20S8BVW8BAZCW"
 default[:app_django][:app][:email_subject] = "[Soundhalo PRODUCTION Server]"
 
@@ -33,9 +32,10 @@ default[:app_django][:celery][:broker_port] = "5672"
 default[:app_django][:celery][:broker_vhost] = ""
 default[:app_django][:celery][:broker_user] = ""
 default[:app_django][:celery][:broker_password] = ""
+default[:app_django][:app][:enable_newrelic] = "True"
 
+set[:app_django][:app][:enable_traceview] = "False"
 set[:app_django][:trace_view_key] = "01ffc16d-a622-4dbb-9840-a6fb6844c70b"
-set[:app_django][:app][:enable_newrelic] = "True"
 
 # the master app server will run db sync and migration
 # operations as well as have cron jobs
