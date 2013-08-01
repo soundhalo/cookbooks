@@ -156,7 +156,11 @@ attribute "app_django/is_master",
   "2) All django database operations will run on this instance",
   :choice => ["true", "false"],
   :default => "false",
-  :recipes => ["app_django::update_code","app_django::install_crons","app_django::run_django_commands"]
+  :recipes => ["app_django::update_code",
+    "app_django::install_crons",
+    "app_django::run_django_commands",
+    "app_django::update_code_and_run_commands",
+    "app_django::setup_server_1_4"]
   
 attribute "app_django/app/cache/url",
   :display_name => "memcached url",
