@@ -25,6 +25,7 @@ default[:app_django][:app][:environment] = "production"
 default[:app_django][:app][:name] = ""
 default[:app_django][:app][:cloudfront_id] = "E20S8BVW8BAZCW"
 default[:app_django][:app][:email_subject] = "[Soundhalo PRODUCTION Server]"
+default[:app_django][:app][:default_from_email] = "soundhalo <root@soundhalo.com>"
 
 default[:app_django][:celery][:broker_type] = "amqp"
 default[:app_django][:celery][:broker_host] = ""

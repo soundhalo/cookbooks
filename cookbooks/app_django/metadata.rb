@@ -62,6 +62,13 @@ attribute "app_django/app/email_subject",
   :default => "[Soundhalo PRODUCTION Server]",
   :recipes => ["app_django::setup_server_1_4"]
 
+attribute "app_django/app/default_from_email",
+  :display_name => "The default from email address",
+  :description =>
+    "The default email address for emails sent from the server",
+  :default => "soundhalo <root@soundhalo.com>",
+  :recipes => ["app_django::setup_server_1_4"]
+
 attribute "app_django/apache/serve_local_files",
   :display_name => "Apache serve local Files",
   :description =>
