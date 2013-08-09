@@ -69,6 +69,34 @@ attribute "app_django/app/default_from_email",
   :default => "soundhalo <root@soundhalo.com>",
   :recipes => ["app_django::setup_server_1_4"]
 
+attribute "app_django/app/registration_site_id",
+  :display_name => "Activation site ID",
+  :description =>
+    "The site used as a base for building the activation url",
+  :default => "1",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/app/registration_desktop_redirect_url",
+  :display_name => "Activation redirect url (desktop)",
+  :description =>
+    "The url to redirect desktop users to after activation",
+  :default => "https://app.soundhalo.com",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/app/registration_mobile_redirect_url",
+  :display_name => "Activation redirect url (mobile)",
+  :description =>
+    "The url to redirect mobile users to after activation",
+  :default => "https://m.soundhalo.com",
+  :recipes => ["app_django::setup_server_1_4"]
+
+attribute "app_django/app/registration_android_redirect_url",
+  :display_name => "Activation redirect url (android)",
+  :description =>
+    "The url to redirect android users to after activation",
+  :default => "soundhalo://",
+  :recipes => ["app_django::setup_server_1_4"]
+
 attribute "app_django/apache/serve_local_files",
   :display_name => "Apache serve local Files",
   :description =>

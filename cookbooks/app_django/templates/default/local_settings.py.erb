@@ -22,6 +22,13 @@ EMAIL_SUBJECT_PREFIX = '<%= node[:app_django][:app][:email_subject] %> '
 DEFAULT_FROM_EMAIL = '<%= node[:app_django][:app][:default_from_email] %>'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
+#### Registration #####
+REGISTRATION_SITE_ID = <%= node[:app_django][:app][:registration_site_id] %>
+
+DESKTOP_URL = "<%= node[:app_django][:app][:registration_desktop_redirect_url] %>"
+MOBILE_URL = "<%= node[:app_django][:app][:registration_mobile_redirect_url] %>"
+ANDROID_APP_URL = "<%= node[:app_django][:app][:registration_android_redirect_url] %>"
+
 # celery info
 BROKER_URL = '<%= @vars[:broker_url] %>'
 
