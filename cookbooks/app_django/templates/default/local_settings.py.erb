@@ -20,6 +20,7 @@ DATABASES = {
 
 EMAIL_SUBJECT_PREFIX = '<%= node[:app_django][:app][:email_subject] %> '
 DEFAULT_FROM_EMAIL = '<%= node[:app_django][:app][:default_from_email] %>'
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 # celery info
 BROKER_URL = '<%= @vars[:broker_url] %>'
