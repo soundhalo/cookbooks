@@ -1,4 +1,4 @@
-<VirtualHost *:<%= node[:soundhalo_sites][:apache_port] %>
+<VirtualHost *:<%= node[:soundhalo_sites][:apache_port] %>>
         ServerName <%= @params[:server_name] %>
         DocumentRoot <%= @params[:docroot] %>
         
