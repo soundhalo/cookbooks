@@ -52,6 +52,13 @@ recipe "soundhalo_sites::request_loadbalancer_deny",
   " private IP address. This script should be run on a load balancer after" +
   " disconnecting application servers or upon decommissioning."
     
+recipe "soundhalo_sites::handle_loadbalancers_allow",
+  "Runs remote recipe on app server from loadbalancer requesting access." +
+  " DO NOT RUN."
+
+recipe "soundhalo_sites::handle_loadbalancers_deny",
+  "Runs remote recipe on app server from loadbalancer revoking access." +
+  " DO NOT RUN."    
 #recipe "soundhalo_sites::update_code_www",
 #  "checkout or pull down code for www site."
 

@@ -12,7 +12,7 @@ rightscale_marker :begin
 
 # Setup attributes
 rule_ip = node[:soundhalo_sites][:lb_ip]
-port = node[:soundhalo_sites][:port]
+port = node[:soundhalo_sites][:apache_port]
 
 log "  Removing firewall rules used to allow loadbalancer to connect"
 # See cookbooks/sys_firewall/providers/default.rb for the "update" action.
