@@ -1,3 +1,4 @@
+default[:soundhalo_sites][:ip] = node[:cloud][:private_ips][0]
 default[:soundhalo_sites][:apache_port] = 80
 default[:soundhalo_sites][:prod_url] = ""
 default[:soundhalo_sites][:web_root] = "/home/webapps"

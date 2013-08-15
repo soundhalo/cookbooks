@@ -25,6 +25,16 @@ node[:soundhalo_sites][:app].each do |app_name, entry|
   
 end
 
+# set private ip
+node[:soundhalo_sites][:ip] = node[:cloud][:private_ips][0]
+
+log "  Application IP is #{node[:soundhalo_sites][:ip]}"
+log "  Application port is #{node[:soundhalo_sites][:port]}"
+
+right_link_tag "appserver:active=true"
+right_link_tag "appserver:listen_ip=#{node[:soundhalo_sites][:ip]}"
+right_link_tag "appserver:listen_port=#{node[:soundhalo_sites][:apache_port]}"
+
 # create the htpasswd file
 template ::File.join(node[:soundhalo_sites][:web_root],"htpasswd") do
   source "htpasswd.erb"
