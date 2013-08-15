@@ -1,22 +1,6 @@
-<VirtualHost *:80>
-        # redirect all to ssl
-        ServerName <%= @params[:server_name] %>
-        Redirect / https://<%= @params[:server_name] %>/
-</VirtualHost>
-
-<VirtualHost *:443>
+<VirtualHost *:<%= node[:soundhalo_sites][:apache_port] %>
         ServerName <%= @params[:server_name] %>
         DocumentRoot <%= @params[:docroot] %>
-        
-        SSLEngine on
-        SSLProtocol all -SSLv2
-        SSLCipherSuite ALL:!ADH:!EXPORT:!SSLv2:RC4+RSA:+HIGH:+MEDIUM:+LOW
-
-        RequestHeader set X_FORWARDED_PROTO 'https'
-
-        SSLCertificateFile <%= node[:soundhalo_sites][:ssl_path] %>/ssl_cert.crt
-        SSLCertificateKeyFile <%= node[:soundhalo_sites][:ssl_path] %>/ssl_key.pem
-        SSLCertificateChainFile <%= node[:soundhalo_sites][:ssl_path] %>/ssl_chain.crt
         
         <DirectoryMatch  /\.git/|/\.svn/ >
           Deny from all
@@ -55,15 +39,6 @@
                 <% end %>
                 
         </Directory>
-
-        SSLProxyEngine on
-        ProxyPassMatch /api/(.*) https://<%= @params[:prod_url] %>/api/$1
-        ProxyPassMatch /api-ssl/(.*) https://<%= @params[:prod_url] %>/api/$1
-        
-        <Proxy *>
-        Order Deny,Allow
-        Allow from all
-        </Proxy>
 
         Alias /media <%= @params[:webroot] %>/media
         <Directory <%= @params[:webroot] %>/media>

@@ -1,5 +1,5 @@
 default[:soundhalo_sites][:ip] = node[:cloud][:private_ips][0]
-default[:soundhalo_sites][:apache_port] = 80
+default[:soundhalo_sites][:apache_port] = 8000
 default[:soundhalo_sites][:prod_url] = ""
 default[:soundhalo_sites][:web_root] = "/home/webapps"
 default[:soundhalo_sites][:ssl_path] = "/etc/apache2/certs"
@@ -30,20 +30,20 @@ set[:soundhalo_sites][:app][:account][:build_target] = ''
 set[:soundhalo_sites][:app][:account][:template] = 'account_vhost.erb'
 set[:soundhalo_sites][:app][:account][:use_node] = false
 
-default[:soundhalo_sites][:app][:www][:git_repo] = ""
-default[:soundhalo_sites][:app][:www][:git_branch] = ""
-default[:soundhalo_sites][:app][:www][:web_url] = ""
-default[:soundhalo_sites][:app][:www][:use_auth] = 'false'
-set[:soundhalo_sites][:app][:www][:template] = "www_vhost.erb"
-set[:soundhalo_sites][:app][:www][:use_node] = false
+#default[:soundhalo_sites][:app][:www][:git_repo] = ""
+#default[:soundhalo_sites][:app][:www][:git_branch] = ""
+#default[:soundhalo_sites][:app][:www][:web_url] = ""
+#default[:soundhalo_sites][:app][:www][:use_auth] = 'false'
+#set[:soundhalo_sites][:app][:www][:template] = "www_vhost.erb"
+#set[:soundhalo_sites][:app][:www][:use_node] = false
 
-default[:soundhalo_sites][:app][:partners][:git_repo] = ""
-default[:soundhalo_sites][:app][:partners][:git_branch] = ""
-default[:soundhalo_sites][:app][:partners][:web_url] = ""
-default[:soundhalo_sites][:app][:partners][:use_auth] = 'true'
-default[:soundhalo_sites][:app][:partners][:redirect_android] = 'false'
-set[:soundhalo_sites][:app][:partners][:template] = "partners_vhost.erb"
-set[:soundhalo_sites][:app][:partners][:use_node] = false
+#default[:soundhalo_sites][:app][:partners][:git_repo] = ""
+#default[:soundhalo_sites][:app][:partners][:git_branch] = ""
+#default[:soundhalo_sites][:app][:partners][:web_url] = ""
+#default[:soundhalo_sites][:app][:partners][:use_auth] = 'true'
+#default[:soundhalo_sites][:app][:partners][:redirect_android] = 'false'
+#set[:soundhalo_sites][:app][:partners][:template] = "partners_vhost.erb"
+#set[:soundhalo_sites][:app][:partners][:use_node] = false
 
 node[:soundhalo_sites][:app].each do |app_name, entry|
   set[:soundhalo_sites][:app][app_name][:web_dir] = ::File.join(node[:soundhalo_sites][:web_root],app_name)
