@@ -10,4 +10,4 @@ default[:lb_haproxy][:algorithm] = 'roundrobin'
 default[:lb_haproxy][:timeout_client] = '60000'
 default[:lb_haproxy][:timeout_server] = '60000'
 default[:lb_haproxy][:ssl] = 'true'
-
+default[:lb_haproxy][:ssl_redirect_pools] = 'default'

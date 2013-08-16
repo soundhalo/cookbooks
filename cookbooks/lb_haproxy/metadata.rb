@@ -63,3 +63,14 @@ attribute "lb_haproxy/ssl",
   :recipes => [
     "lb_haproxy::setup_server"
   ]
+  
+attribute "lb_haproxy/ssl_redirect_pools",
+  :display_name => "Redirect pools to ssl"
+  :description =>
+    "Comma separated list of pools for which a redirect rule will be" +
+    " added to force http to https",
+  :required => "optional",
+  :default => "default",
+  :recipes => [
+    "lb_haproxy::setup_server"
+  ]

@@ -6,6 +6,7 @@
 # if applicable, other agreements such as a RightScale Master Subscription Agreement.
 
 include RightScale::LB::Helper
+include RightScale::App::Helper
 
 action :install do
 
@@ -279,7 +280,24 @@ action :advanced_configs do
       :pool_name_full => pool_name_full
     )
   end
-
+  
+  if pool_names(node[:lb_haproxy][:ssl_redirect_pools]).include? pool_name
+    # Template to generate redirect sections for haproxy config file
+    # RESULT EXAMPLE
+    # redirect prefix https://pool_name if acl_https acl_pool_name
+    template "/etc/haproxy/#{node[:lb][:service][:provider]}.d/redirect_#{pool_name}.conf" do
+      source "haproxy_backend_redirect.erb"
+      owner "haproxy"
+      group "haproxy"
+      mode "0600"
+      backup false
+      cookbook "lb_haproxy"
+      variables(
+        :pool_name => pool_name,
+        :pool_name_full => pool_name_full
+      )
+    end
+    
 end
 
 

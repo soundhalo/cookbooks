@@ -28,10 +28,22 @@ done
 
 echo "" >> ${CONF_FILE}
 
+echo "  acl acl_https hdr_beg(X-Forwarded-Proto) -i https" >> ${CONF_FILE}
+
 for single_pool in ${pools}
 do
   if [ -e /etc/haproxy/lb_haproxy.d/acl_${single_pool}.conf ]; then
     cat "/etc/haproxy/lb_haproxy.d/acl_${single_pool}.conf" >> ${CONF_FILE}
+  fi
+done
+
+echo "" >> ${CONF_FILE}
+
+for single_pool in ${pools}
+do
+  # this will add redirect statements to config file
+  if [ -r  /etc/haproxy/lb_haproxy.d/redirect_${single_pool}.conf ]; then
+    cat /etc/haproxy/lb_haproxy.d/redirect_${single_pool}.conf >> ${CONF_FILE}
   fi
 done
 
