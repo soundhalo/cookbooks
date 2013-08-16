@@ -297,6 +297,7 @@ action :advanced_configs do
         :pool_name_full => pool_name_full
       )
     end
+  end
     
 end
 
