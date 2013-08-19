@@ -1,0 +1,22 @@
+<VirtualHost *:<%= @params[:vhost_port] %>>
+  ServerName <%= @params[:server_name] %>
+  
+  CustomLog /var/log/apache2/access.log combined
+  ErrorLog  /var/log/apache2/error.log
+  LogLevel warn
+  
+  <% if @params[:use_auth] == 'true' %>
+  <Location "/">
+      AuthType Basic
+      AuthName "Auth required"
+      Require valid-user
+      AuthUserFile /home/webapps/htpasswd
+  </Location>
+  <% end %>
+  
+  DocumentRoot <%= @params[:webroot] %>
+  <Directory <%= @params[:webroot] %>>
+      Options Includes FollowSymLinks
+      AllowOverride All
+  </Directory>
+</VirtualHost>

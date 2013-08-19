@@ -1,0 +1,27 @@
+<VirtualHost *:<%= @params[:vhost_port] %>>
+  ServerName <%= @params[:server_name] %>
+  ServerAlias www2.soundhalo.com
+  DocumentRoot <%= @params[:webroot] %>
+
+  CustomLog /var/log/apache2/access.log combined
+  ErrorLog  /var/log/apache2/error.log
+  LogLevel warn
+
+  Alias /faq <%= @params[:webroot] %>/support
+
+  AcceptPathInfo On
+
+  <Directory <%= @params[:webroot] %>>
+        Options Includes FollowSymLinks
+        AllowOverride All
+  </Directory>
+  
+</VirtualHost>
+
+<VirtualHost *:<%= @params[:vhost_port] %>>
+    ServerName www.soundhalo.com
+    ServerAlias blog.soundhalo.com
+    ServerAlias support.soundhalo.com
+
+    Redirect permanent / http://<%= @params[:server_name] %>/
+</VirtualHost>

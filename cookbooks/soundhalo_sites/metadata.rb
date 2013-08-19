@@ -9,7 +9,6 @@ version          '0.1.0'
 depends "rightscale"
 depends "apache2"
 depends "repo"
-depends "app"
 
 recipe "soundhalo_sites::default",
   "Initializes variables"
@@ -29,42 +28,11 @@ recipe "soundhalo_sites::update_code_desktop",
 recipe "soundhalo_sites::update_code_mobile",
   "checkout or pull down code for mobile app. runs build script and restarts apache"
 
-recipe "soundhalo_sites::do_loadbalancers_allow",
-  "Allows connections from all load balancers within a given listener pool" +
-  " which are tagged with loadbalancer:lb=<applistener_name>." +
-  " This script should be run on an application server before it makes" +
-  " a request to be connected to the load balancers."
+recipe "soundhalo_sites::update_code_www",
+  "checkout or pull down code for www site."
 
-recipe "soundhalo_sites::do_loadbalancers_deny",
-  "Denies connections from all load balancers which are tagged with" +
-  " loadbalancer:lb=<applistener_name>. For example, you can run this" +
-  " script on an application server to deny connections from all load" +
-  " balancers within a given listener pool."
-
-recipe "soundhalo_sites::request_loadbalancer_allow",
-  "Sends a request to all application servers tagged with" +
-  " loadbalancer:app=<applistener_name> to allow connections from the server's" +
-  " private IP address. This script should be run on a load balancer before" +
-  " any application servers are attached to it."
-
-recipe "soundhalo_sites::request_loadbalancer_deny",
-  "Sends a request to all application servers tagged with" +
-  " loadbalancer:app=<applistener_name> to deny connections from the server's" +
-  " private IP address. This script should be run on a load balancer after" +
-  " disconnecting application servers or upon decommissioning."
-    
-recipe "soundhalo_sites::handle_loadbalancers_allow",
-  "Runs remote recipe on app server from loadbalancer requesting access." +
-  " DO NOT RUN."
-
-recipe "soundhalo_sites::handle_loadbalancers_deny",
-  "Runs remote recipe on app server from loadbalancer revoking access." +
-  " DO NOT RUN."    
-#recipe "soundhalo_sites::update_code_www",
-#  "checkout or pull down code for www site."
-
-#recipe "soundhalo_sites::update_code_partners",
-#  "checkout or pull down code for partners site."
+recipe "soundhalo_sites::update_code_partners",
+  "checkout or pull down code for partners site."
   
 attribute "soundhalo_sites/apache_port",
   :display_name => "Apache port to listen on",
@@ -207,74 +175,74 @@ attribute "soundhalo_sites/app/account/web_url",
     "soundhalo_sites::default",
   ]
 
-#attribute "soundhalo_sites/app/www/git_repo",
-#  :display_name => "soundhalo www site git repo",
-#  :description => "",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::update_code_www",
-#    "soundhalo_sites::default",
-#  ]
-#
-#attribute "soundhalo_sites/app/www/git_branch",
-#  :display_name => "soundhalo www site git repo branch",
-#  :description => "",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::update_code_www",
-#    "soundhalo_sites::default",
-#  ]
-#
-#attribute "soundhalo_sites/app/www/web_url",
-#  :display_name => "soundhalo www site url",
-#  :description => "",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::setup_vhosts",
-#    "soundhalo_sites::update_code_www",
-#    "soundhalo_sites::default",
-#  ] 
-#
-#attribute "soundhalo_sites/app/www/use_auth",
-#  :display_name => "Use http auth",
-#  :description => "Whether to use httpauth on vhost",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::setup_vhosts",
-#  ] 
-#
-#attribute "soundhalo_sites/app/partners/git_repo",
-#  :display_name => "soundhalo partners site git repo",
-#  :description => "",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::update_code_partners",
-#    "soundhalo_sites::default",
-#  ]
-#
-#attribute "soundhalo_sites/app/partners/git_branch",
-#  :display_name => "soundhalo partners site git repo branch",
-#  :description => "",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::update_code_partners",
-#    "soundhalo_sites::default",
-#  ]
-#
-#attribute "soundhalo_sites/app/partners/web_url",
-#  :display_name => "soundhalo partners site url",
-#  :description => "",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::setup_vhosts",
-#    "soundhalo_sites::update_code_partners",
-#    "soundhalo_sites::default",
-#  ] 
-#
-#attribute "soundhalo_sites/app/partners/use_auth",
-#  :display_name => "Use http auth",
-#  :description => "Whether to use httpauth on vhost",
-#  :required => "required",
-#  :recipes => [
-#    "soundhalo_sites::setup_vhosts",
-#  ]
+attribute "soundhalo_sites/app/www/git_repo",
+  :display_name => "soundhalo www site git repo",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_www",
+    "soundhalo_sites::default",
+  ]
+
+attribute "soundhalo_sites/app/www/git_branch",
+  :display_name => "soundhalo www site git repo branch",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_www",
+    "soundhalo_sites::default",
+  ]
+
+attribute "soundhalo_sites/app/www/web_url",
+  :display_name => "soundhalo www site url",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+    "soundhalo_sites::update_code_www",
+    "soundhalo_sites::default",
+  ] 
+
+attribute "soundhalo_sites/app/www/use_auth",
+  :display_name => "Use http auth",
+  :description => "Whether to use httpauth on vhost",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ] 
+
+attribute "soundhalo_sites/app/partners/git_repo",
+  :display_name => "soundhalo partners site git repo",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_partners",
+    "soundhalo_sites::default",
+  ]
+
+attribute "soundhalo_sites/app/partners/git_branch",
+  :display_name => "soundhalo partners site git repo branch",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::update_code_partners",
+    "soundhalo_sites::default",
+  ]
+
+attribute "soundhalo_sites/app/partners/web_url",
+  :display_name => "soundhalo partners site url",
+  :description => "",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+    "soundhalo_sites::update_code_partners",
+    "soundhalo_sites::default",
+  ] 
+
+attribute "soundhalo_sites/app/partners/use_auth",
+  :display_name => "Use http auth",
+  :description => "Whether to use httpauth on vhost",
+  :required => "required",
+  :recipes => [
+    "soundhalo_sites::setup_vhosts",
+  ]
