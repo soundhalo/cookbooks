@@ -1,0 +1,59 @@
+<VirtualHost *:<%= node[:soundhalo_clients][:apache_port] %>>
+        ServerName <%= @params[:server_name] %>
+        DocumentRoot <%= @params[:docroot] %>
+        
+        <DirectoryMatch  /\.git/|/\.svn/ >
+          Deny from all
+        </DirectoryMatch>
+        
+        <Directory <%= @params[:docroot] %>>
+                <% if @params[:use_auth] == 'true' %>
+                AuthType Basic
+                AuthName "Auth required"
+                Require valid-user
+                AuthUserFile /home/webapps/htpasswd
+                <% end %>
+                Options FollowSymLinks
+                AllowOverride AuthConfig
+
+                DirectoryIndex index.html
+                Options Indexes FollowSymLinks MultiViews
+                #AllowOverride None
+                Order allow,deny
+                allow from all
+
+                RewriteEngine On
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteCond %{REQUEST_FILENAME} !-d
+                RewriteCond %{REQUEST_URI} !index
+                RewriteRule (.*) /index.html [L,QSA]
+
+                <% if @application_name == 'desktop' %>
+                  RewriteCond %{HTTP_USER_AGENT} ^.*iP(hone|od|ad).*$ [OR]
+                  RewriteCond %{HTTP_USER_AGENT} ^.*Android.*$
+                  RewriteRule ^(.*)$ http://soundhalo.com [L,QSA]
+                <% end %>
+                <% if @application_name == 'mobile' %>
+                  RewriteCond %{HTTP_USER_AGENT} !^.*iP(hone|od|ad).*$
+                  RewriteRule ^(.*)$ http://soundhalo.com [L,QSA]
+                <% end %>
+                
+        </Directory>
+
+        Alias /media <%= @params[:webroot] %>/media
+        <Directory <%= @params[:webroot] %>/media>
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+        <Location "/media">
+                Satisfy Any
+        </Location>
+
+        Alias /core <%= @params[:webroot] %>/core
+        <Directory <%= @params[:webroot] %>/core>
+                Order allow,deny
+                Allow from all
+        </Directory>
+
+</VirtualHost>
