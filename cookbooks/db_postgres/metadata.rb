@@ -3,7 +3,7 @@ maintainer_email "steve@two-bulls.com"
 license          ""
 description      "Installs/configures a PostgreSQL database client and server with automated backups, and encoding"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.1"
+version          "13.3.0"
 
 # supports "centos", "~> 5.8", "~> 6"
 # supports "redhat", "~> 5.8"

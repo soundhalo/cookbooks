@@ -1,123 +1,123 @@
 {
-  "dependencies": {
-    "app": ">= 0.0.0",
-    "app_django": ">= 0.0.0",
-    "python": ">= 0.0.0"
-  },
-  "maintainer_email": "steve@two-bulls.com",
-  "suggestions": {
+  "groupings": {
   },
   "recommendations": {
   },
-  "version": "0.0.1",
+  "description": "Installs/Configures celery",
   "recipes": {
-    "celery::default": "Include Celery daemon install/configuration",
-    "celery::do_start": "Starts the celery daemon",
-    "celery::setup_logrotate": "Adds logrotation to celery log files",
     "celery::user": "Create an user to run Celery daemon",
+    "celery::default": "Include Celery daemon install/configuration",
     "celery::do_stop": "Stops the celery daemon",
-    "celery::do_restart": "Restarts the celery daemon"
+    "celery::do_start": "Starts the celery daemon",
+    "celery::do_restart": "Restarts the celery daemon",
+    "celery::setup_logrotate": "Adds logrotation to celery log files"
+  },
+  "attributes": {
+    "celery/events": {
+      "display_name": "Events enabled",
+      "description": "Enables celery events notifications",
+      "default": "true",
+      "recipes": [
+
+      ],
+      "required": "optional",
+      "type": "string",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "celery/concurrency": {
+      "display_name": "Celery processes running",
+      "description": "The number of celery processes to run",
+      "default": "8",
+      "recipes": [
+
+      ],
+      "required": "optional",
+      "type": "string",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "celery/group": {
+      "display_name": "Celery group",
+      "description": "Celery daemon group",
+      "default": "celery",
+      "recipes": [
+
+      ],
+      "required": "optional",
+      "type": "string",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "celery/user": {
+      "display_name": "Celery user",
+      "description": "Celery daemon user",
+      "default": "celery",
+      "recipes": [
+
+      ],
+      "required": "optional",
+      "type": "string",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "celery/log_dir": {
+      "display_name": "Log directory",
+      "description": "Celery daemon log directory",
+      "default": "/var/log/celery",
+      "recipes": [
+
+      ],
+      "required": "optional",
+      "type": "string",
+      "calculated": false,
+      "choice": [
+
+      ]
+    },
+    "celery/log_level": {
+      "display_name": "Log level",
+      "description": "Celery daemon log level",
+      "default": "info",
+      "recipes": [
+
+      ],
+      "required": "optional",
+      "type": "string",
+      "calculated": false,
+      "choice": [
+
+      ]
+    }
   },
   "providing": {
-  },
-  "conflicting": {
   },
   "platforms": {
     "ubuntu": ">= 0.0.0"
   },
-  "license": "N/A",
-  "groupings": {
-  },
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n",
-  "maintainer": "Steve Cassidy",
-  "description": "Installs/Configures celery",
   "name": "celery",
-  "attributes": {
-    "celery/concurrency": {
-      "default": "8",
-      "display_name": "Celery processes running",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "description": "The number of celery processes to run"
-    },
-    "celery/user": {
-      "default": "celery",
-      "display_name": "Celery user",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "description": "Celery daemon user"
-    },
-    "celery/group": {
-      "default": "celery",
-      "display_name": "Celery group",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "description": "Celery daemon group"
-    },
-    "celery/events": {
-      "default": "true",
-      "display_name": "Events enabled",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "description": "Enables celery events notifications"
-    },
-    "celery/log_level": {
-      "default": "info",
-      "display_name": "Log level",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "description": "Celery daemon log level"
-    },
-    "celery/log_dir": {
-      "default": "/var/log/celery",
-      "display_name": "Log directory",
-      "recipes": [
-
-      ],
-      "type": "string",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "description": "Celery daemon log directory"
-    }
+  "dependencies": {
+    "app_django": ">= 0.0.0",
+    "app": ">= 0.0.0",
+    "python": ">= 0.0.0"
   },
+  "version": "1.0.0",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n",
   "replacing": {
-  }
+  },
+  "suggestions": {
+  },
+  "license": "N/A",
+  "maintainer_email": "steve@two-bulls.com",
+  "conflicting": {
+  },
+  "maintainer": "Steve Cassidy"
 }

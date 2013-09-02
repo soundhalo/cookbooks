@@ -3,7 +3,7 @@ maintainer_email "steve@two-bulls.com"
 license          "N/A"
 description      "Installs/Configures celery"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
-version          "0.0.1"
+version          "1.0.0"
 
 supports "ubuntu" # It should work on debian too, but not tested yet
 
