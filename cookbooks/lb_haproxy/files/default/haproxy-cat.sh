@@ -39,7 +39,7 @@ do
 done
 
 echo "" >> ${CONF_FILE}
-echo "  redirect prefix https://app.soundhalo.com/me if acl_my_soundhalo_com" >> ${CONF_FILE}
+echo "  redirect location https://app.soundhalo.com/me if acl_my_soundhalo_com" >> ${CONF_FILE}
 for single_pool in ${pools}
 do
   # this will add redirect statements to config file
