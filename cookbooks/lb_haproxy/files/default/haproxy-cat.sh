@@ -28,7 +28,7 @@ done
 
 echo "" >> ${CONF_FILE}
 
-echo "  acl acl_my_soundhalo_com hdr_beg(host) -i my.soundhalo.com"
+echo "  acl acl_my_soundhalo_com hdr_beg(host) -i my.soundhalo.com" >> ${CONF_FILE}
 echo "  acl acl_https hdr_beg(X-Forwarded-Proto) -i https" >> ${CONF_FILE}
 
 for single_pool in ${pools}
@@ -39,7 +39,7 @@ do
 done
 
 echo "" >> ${CONF_FILE}
-echo "  redirect prefix https://app.soundhalo.com/me if acl_my_soundhalo_com"
+echo "  redirect prefix https://app.soundhalo.com/me if acl_my_soundhalo_com" >> ${CONF_FILE}
 for single_pool in ${pools}
 do
   # this will add redirect statements to config file
