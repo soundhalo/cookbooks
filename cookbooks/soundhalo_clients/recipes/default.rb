@@ -42,7 +42,7 @@ template ::File.join(node[:soundhalo_clients][:web_root],"htpasswd") do
 end
 
 # create empty vhost
-template "/etc/apache/sites-available/000-empty" do
+template "/etc/apache2/sites-available/000-empty" do
   source "000-empty.erb"
   mode "0644"
 end
