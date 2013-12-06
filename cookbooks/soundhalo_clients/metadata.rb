@@ -4,7 +4,7 @@ maintainer_email 'steve@two-bulls.com'
 license          'All rights reserved'
 description      'Installs/Configures app_soundhalo_clients'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '1.0.1'
+version          '1.0.2'
 
 depends "rightscale"
 depends "apache2"

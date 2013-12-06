@@ -33,4 +33,11 @@ node[:soundhalo_clients][:app].each do |app_name, entry|
 
 end
 
+# enable special empty vhost to allow
+# load balancer health checks when
+# http auth is being used
+apache_site "000-empty" do
+  enable true
+end
+
 rightscale_marker :end
